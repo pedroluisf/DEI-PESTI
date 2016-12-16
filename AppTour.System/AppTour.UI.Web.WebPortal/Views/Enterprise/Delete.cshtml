@@ -1,0 +1,100 @@
+﻿@model AppTour.Model.Models.Enterprise.EnterpriseModel
+@{
+	Layout = "~/Views/Shared/_Layout.cshtml";
+	ViewBag.Title = @ViewRes.Enterprise.HeaderDelete;
+}
+<script type="text/javascript">
+	$(function () {
+	    $("input:submit, button, #button").button();
+
+		$("#dialog:ui-dialog").dialog("destroy");
+		$("#delete")
+			.button()
+			.click(function () {
+				$("#delete-dialog").dialog("open");
+			});
+		$("#delete-dialog").dialog({
+			resizable: false,
+			autoOpen: false,
+			height: 200,
+
+			show: { effect: 'drop', direction: "up" },
+			hide: { effect: 'drop', direction: "down" },
+
+			modal: true,
+			buttons: {
+			    "@ViewRes.Enterprise.Apagar": function () {
+					$(this).dialog("close");
+					$("Form").submit();
+
+				},
+				Cancel: function () {
+					$(this).dialog("close");
+				}
+			}
+		});
+	});
+</script>
+<div id="delete-dialog" title="@ViewRes.Enterprise.Apagar" style="display: none;">
+	<p>
+		<span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
+		@ViewRes.Enterprise.DeleteMessage</p>
+	<p style="text-align: right; font-weight: bold;">
+		@ViewRes.Enterprise.DeleteMessage1</p>
+</div>
+@if (ViewData.Count > 0)
+{ 
+	<div class="ui-widget">
+		<div class="ui-state-error ui-corner-all" style="margin-top: 2px; margin-bottom: 10px;
+			padding: 0 .7em;">
+			<p>
+				<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+				@foreach (var error in ViewData)
+				{ 
+					<strong>@error.Key</strong> @error.Value
+				}
+			</p>
+		</div>
+	</div>
+}
+else
+{ 
+	<div class="ui-widget">
+		<div class="ui-state-highlight ui-corner-all" style="margin-top: 2px; margin-bottom: 10px;
+			padding: 0 .7em;">
+			<p>
+				<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+				<strong>@ViewRes.Enterprise.Atencao</strong> @ViewRes.Enterprise.DeleteHeaderMsg <strong>@Model.Name</strong>?</p>
+		</div>
+	</div>
+}
+<fieldset>
+	<legend>@ViewRes.Enterprise.HeaderDelete</legend>
+	<div class="display-label">
+		@ViewRes.Enterprise.Nome</div>
+	<div class="display-field">
+		@Html.DisplayFor(model => model.Name)
+	</div>
+	<div class="display-label">
+		@ViewRes.Enterprise.Descricao</div>
+	<div class="display-field">
+		@Html.DisplayFor(model => model.Description)
+	</div>
+	<div class="display-label">
+		@ViewRes.SharedStrings.CreationDate</div>
+	<div class="display-field">
+		@Html.DisplayFor(model => model.CreationDate)
+	</div>
+	<div class="display-label">
+		@ViewRes.SharedStrings.UpdateDate</div>
+	<div class="display-field">
+		@Html.DisplayFor(model => model.UpdateDate)
+	</div>
+</fieldset>
+@using (Html.BeginForm("Delete/" + Model.Id, "Enterprise", FormMethod.Post, new { id = "Form" }))
+{
+	<p>
+		<a href="javascript:void(0);" id="delete">@ViewRes.Enterprise.Apagar</a>
+		@Html.ActionLink(@ViewRes.Enterprise.Lista, "Index", new { controller = "Enterprise" }, new { id = "button" })
+	</p>
+}

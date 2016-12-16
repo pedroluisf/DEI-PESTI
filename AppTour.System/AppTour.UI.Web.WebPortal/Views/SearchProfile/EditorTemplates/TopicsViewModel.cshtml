@@ -1,0 +1,6 @@
+﻿@model AppTour.Model.Models.SearchProfile.TopicsViewModel
+<div>
+    @Html.CheckBoxFor(x => x.Check)
+    @Html.LabelFor(x => x.Name, Model.Name)
+    @Html.HiddenFor(x => x.Id)
+</div>

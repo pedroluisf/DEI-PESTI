@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta property="og:title" content="AppTour - PESTI 2011/2012" />
+    <meta property="og:image" content="http://i.minus.com/iSYIKGYeeOnKe.png" />
+    <title>AppTour - @ViewBag.Title</title>
+    @Html.Partial("_scriptsandstyles")
+</head>
+<body>
+    <section id="wrapper">
+        <header id="header">
+            <div id="main">
+                <img src="@Url.Content("~/Content/images/apptour_small.png")" title="App Tour" alt="App Tour" />
+            </div>
+            <div class="sidebar" style="text-align: center; vertical-align: middle; margin-top: 15px;">
+                <p>@Html.Partial("_LogOnPartial")</p>
+            </div>
+            <div class="clear">
+            </div>
+        </header>
+        <!-- #header -->
+        <section id="content">
+            <div id="main">
+                @RenderBody()
+            </div>
+            <div class="sidebar">
+                @Html.Partial("_Sidebar")
+            </div>
+            <div class="clear">
+            </div>
+        </section>
+        <!-- #content -->
+        <footer id="footer">
+            <p>
+                &copy; 2012 by Ricardo Carneiro & Pedro Luis Ferreira.<br />
+                PESTI Project 2011/2012 - LEI - DEI - ISEP.</p>
+        </footer>
+        <!-- #footer -->
+    </section>
+    <!-- #wrapper -->
+</body>
+</html>

@@ -1,0 +1,116 @@
+﻿@model AppTour.Model.Models.Search.SearchModel
+@{
+    ViewBag.Title = ViewRes.SearchProfile.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>@ViewBag.Title</h2>
+<script type="text/javascript">
+    $(function () {
+        $("input:checkbox, button, #button").button();
+        $("#SearchProfile").addClass("text ui-widget ui-corner-all").css("height", "28");
+        $("#Terms").addClass("text ui-widget-content ui-corner-all").css("height", "28").css("width", "200");
+        $("#save").button({ icons: { primary: "ui-icon-disk"} });
+        $("#save").click(function () {
+            $("#findit").submit();
+        });
+    });
+</script>
+<div>
+    @using (Html.BeginForm("Index", "Search", FormMethod.Post, new { id = "findit" }))
+    {
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Coordenate)
+        if (Session.Count > 2)
+        { 
+        @Html.DropDownListFor(model => model.SearchProfile, (SelectList)ViewBag.SearchProfile)
+        }
+        @Html.TextBoxFor(model => model.Terms)
+        <a href="#" id="save">@ViewRes.Search.Find</a>
+    }
+</div>
+<style type="text/css">
+    .point
+    {
+        padding: 5px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    .point:hover
+    {
+        background-color: #eee;
+    }
+    .imagemClick
+    {
+        cursor: hand;
+        cursor: pointer;
+    }
+    .bottom
+    {
+        top: 50px;
+        position: relative;
+    }
+</style>
+<script type="text/javascript">
+    $(function () {
+        $('.imagemClick').click(function () {
+            var coord = $(this).attr("title");
+
+            var title = $(this).find("img").attr('title');
+
+            var url = null;
+            if (title == "streetview") {
+                // Show Maps
+                url = "http://maps.googleapis.com/maps/api/staticmap?center=" + coord + "&zoom=11&size=200x150&sensor=false";
+                title = "maps";
+            } else {
+                // Show Street View
+                url = "http://maps.googleapis.com/maps/api/streetview?size=200x150&location=" + coord + "&heading=235&sensor=false"
+                title = "streetview";
+            }
+
+            $(this).find("img").attr("src", url);
+            $(this).find("img").attr("title", title);
+            return false;
+        });
+    });
+</script>
+<div id="mainContainer">
+    @if (ViewBag.Points != null)
+    {
+        foreach (AppTour.Model.Models.Point.PointModel item in ViewBag.Points)
+        {
+            string RealCoordenada = string.Empty;
+            string[] ArrayCoordenada = item.Coordenate.Split(',');
+            if (ArrayCoordenada.Length == 4)
+            {
+                RealCoordenada = ArrayCoordenada[0] + '.' + ArrayCoordenada[1] + "," + ArrayCoordenada[2] + '.' + ArrayCoordenada[3];
+            }
+
+            if (RealCoordenada == string.Empty)
+            {
+                RealCoordenada = item.Coordenate;
+            }
+        
+        <div id="@item.Id" class="point">
+            <div class="left">
+                <h1>
+                    <a href="@Url.Action("Detail", new { id = item.Id.ToString() })">@item.Name</a></h1>
+                <p>@item.Address<br />@item.PostalCode - @item.City.Name, @item.City.Country.CountryName</p>
+                <div class="bottom">
+                    <img src="@Url.Content("~/Content/images/url.png")" alt="URL" style="vertical-align: middle;"/>
+                    <a href="@item.URL" target="_blank">@item.Name</a> |
+                    <img src="@Url.Content("~/Content/images/phone.png")" alt="Phone" style="vertical-align: middle;" />
+                    @item.PhoneNumber
+                </div>
+            </div>
+            <div class="right">
+                <div id="image-@item.Id" title="@RealCoordenada" class="imagemClick">
+                    <img src="http://maps.googleapis.com/maps/api/staticmap?center=@RealCoordenada&zoom=11&size=200x150&sensor=false" title="maps" alt="maps">
+                </div>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+        }
+    }
+</div>

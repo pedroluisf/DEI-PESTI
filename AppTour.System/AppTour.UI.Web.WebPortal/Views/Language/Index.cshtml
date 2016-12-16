@@ -1,0 +1,69 @@
+﻿@model IEnumerable<AppTour.Model.Models.Language.LanguageModel>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = @ViewRes.Language.Titulo;
+}
+<p>
+    @Html.ActionLink(@ViewRes.Language.Nova, "Create", new { controller = "Language" }, new { @class = "jbutton" })
+</p>
+<script type="text/javascript">
+    $(function () {
+        $(".jbutton").button();
+        $(".edit").button({
+            icons: {
+                primary: "ui-icon-pencil"
+            }
+            , text: false
+        });
+        $(".trash").button({
+            icons: {
+                primary: "ui-icon-trash"
+            }, text: false
+        });
+    });
+</script>
+<div class="ui-widget">
+    <table class="ui-widget ui-widget-content">
+        <thead>
+            <tr>
+                <th class="ui-widget-header">
+                    @ViewRes.Language.Nome
+                </th>
+                <th class="ui-widget-header">
+                    @ViewRes.Language.ISO
+                </th>
+                <th class="ui-widget-header">
+                    @ViewRes.Language.Imagem
+                </th>
+                <th class="ui-widget-header">
+                    @ViewRes.Language.Activo
+                </th>
+                <th class="ui-widget-header" style="width: 150px;">
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ISO2)
+                    </td>
+                    <td>
+                        <img src="@Url.Content("~/Content/images/languages/" + item.ISO2 + ".png")" alt="@item.Name (@item.ISO2)" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsActive)
+                    </td>
+                    <td style="text-align: center; width: 100px;">
+                        <a href="@Url.Action("Edit", new { id = item.Id })" class="edit" >@ViewRes.SharedStrings.Editar</a>
+                        <a href="@Url.Action("Delete", new { id = item.Id })" class="trash">@ViewRes.SharedStrings.Apagar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C2BA513B-4078-4A4D-A5CE-40F31B896A98}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AppTour.Model.Models</RootNamespace>
+    <AssemblyName>AppTour.Model.Models</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DataAnnotationsExtensions">
+      <HintPath>..\packages\DataAnnotationsExtensions.1.0.2.0\lib\NETFramework40\DataAnnotationsExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="DataAnnotationsExtensions.ClientValidation">
+      <HintPath>..\packages\DataAnnotationsExtensions.MVC3.1.0.2.0\lib\NETFramework40\DataAnnotationsExtensions.ClientValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation">
+      <HintPath>..\packages\FluentValidation.3.3.1.0\lib\Net40\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WebActivator">
+      <HintPath>..\packages\WebActivator.1.2.0.0\lib\NETFramework40\WebActivator.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Agent\AgentModel.cs" />
+    <Compile Include="Agent\AgentValidator.cs" />
+    <Compile Include="App\AppModel.cs" />
+    <Compile Include="App\AppValidator.cs" />
+    <Compile Include="App_Start\RegisterClientValidationExtensions.cs" />
+    <Compile Include="Author\AuthorModel.cs" />
+    <Compile Include="Author\AuthorValidator.cs" />
+    <Compile Include="BaseModel.cs" />
+    <Compile Include="City\CityModel.cs" />
+    <Compile Include="City\CityValidator.cs" />
+    <Compile Include="Classification\ClassificationModel.cs" />
+    <Compile Include="Classification\ClassificationValidator.cs" />
+    <Compile Include="Comment\CommentModel.cs" />
+    <Compile Include="Comment\CommentValidator.cs" />
+    <Compile Include="Country\CountryModel.cs" />
+    <Compile Include="Country\CountryValidator.cs" />
+    <Compile Include="Enterprise\EnterpriseModel.cs" />
+    <Compile Include="Enterprise\EnterpriseValidator.cs" />
+    <Compile Include="Event\EventModel.cs" />
+    <Compile Include="Event\EventValidator.cs" />
+    <Compile Include="Helpers\ValidationHelper.cs" />
+    <Compile Include="Language\LanguageModel.cs" />
+    <Compile Include="Language\LanguageValidator.cs" />
+    <Compile Include="Picture\PictureModel.cs" />
+    <Compile Include="Picture\PictureValidator.cs" />
+    <Compile Include="PointsAttributes\PointAttributeModel.cs" />
+    <Compile Include="PointsAttributes\PointAttributeValidator.cs" />
+    <Compile Include="Point\PointModel.cs" />
+    <Compile Include="Point\PointValidator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchProfile\SearchProfileModel.cs" />
+    <Compile Include="SearchProfile\SearchProfileValidator.cs" />
+    <Compile Include="Search\SearchModel.cs" />
+    <Compile Include="Search\SearchValidator.cs" />
+    <Compile Include="Shared\Resources\ErrorMessages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ErrorMessages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Theme\ThemeModel.cs" />
+    <Compile Include="Theme\ThemeValidator.cs" />
+    <Compile Include="Topic\TopicModel.cs" />
+    <Compile Include="Topic\TopicValidator.cs" />
+    <Compile Include="Translation\TranslationModel.cs" />
+    <Compile Include="Translation\TranslationValidator.cs" />
+    <Compile Include="User\UserModel.cs" />
+    <Compile Include="User\UserValidator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Shared\Resources\ErrorMessages.EN.resx" />
+    <EmbeddedResource Include="Shared\Resources\ErrorMessages.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ErrorMessages.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>ViewRes</CustomToolNamespace>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

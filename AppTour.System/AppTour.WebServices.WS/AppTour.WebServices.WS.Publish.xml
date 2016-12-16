@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="Y:\WS" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="True" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="bin/AppTour.Business.ServiceContracts.dll" publishTime="07/08/2012 13:21:14" />
+    <file relUrl="bin/EN/AppTour.Model.Models.resources.dll" publishTime="07/08/2012 13:21:12" />
+    <file relUrl="bin/AppTour.Business.ServiceContracts.pdb" publishTime="07/08/2012 13:21:14" />
+    <file relUrl="bin/System.Web.Providers.dll" publishTime="04/18/2012 21:37:13" />
+    <file relUrl="bin/AppTour.Business.Services.pdb" publishTime="07/08/2012 13:21:16" />
+    <file relUrl="bin/AppTour.WebServices.WS.dll" publishTime="07/08/2012 14:51:47" />
+    <file relUrl="bin/WebActivator.dll" publishTime="04/15/2012 15:43:33" />
+    <file relUrl="bin/AppTour.DataAccess.Repository.dll" publishTime="07/08/2012 13:21:15" />
+    <file relUrl="bin/fr/FluentValidation.resources.dll" publishTime="04/15/2012 13:57:36" />
+    <file relUrl="bin/pt/FluentValidation.resources.dll" publishTime="04/15/2012 13:57:36" />
+    <file relUrl="bin/FluentValidation.xml" publishTime="04/15/2012 13:57:36" />
+    <file relUrl="bin/DataAnnotationsExtensions.ClientValidation.dll" publishTime="04/15/2012 15:43:33" />
+    <file relUrl="bin/de/FluentValidation.resources.dll" publishTime="04/15/2012 13:57:36" />
+    <file relUrl="bin/FluentValidation.dll" publishTime="04/15/2012 13:57:36" />
+    <file relUrl="packages.config" publishTime="05/01/2012 19:51:10" />
+    <file relUrl="bin/es/FluentValidation.resources.dll" publishTime="04/15/2012 13:57:36" />
+    <file relUrl="bin/DataAnnotationsExtensions.dll" publishTime="04/15/2012 15:43:32" />
+    <file relUrl="bin/pl/FluentValidation.resources.dll" publishTime="04/15/2012 13:57:36" />
+    <file relUrl="bin/AppTour.Model.Models.dll" publishTime="07/08/2012 13:21:12" />
+    <file relUrl="bin/ru/FluentValidation.resources.dll" publishTime="04/15/2012 13:57:36" />
+    <file relUrl="bin/it/FluentValidation.resources.dll" publishTime="04/15/2012 13:57:36" />
+    <file relUrl="bin/AppTour.DataAccess.Repository.pdb" publishTime="07/08/2012 13:21:15" />
+    <file relUrl="bin/AppTour.WebServices.WS.pdb" publishTime="07/08/2012 14:51:47" />
+    <file relUrl="AppTourWS.svc" publishTime="05/01/2012 19:39:51" />
+    <file relUrl="bin/FluentValidation.pdb" publishTime="04/15/2012 13:57:36" />
+    <file relUrl="bin/AppTour.Business.Services.dll" publishTime="07/08/2012 13:21:16" />
+    <file relUrl="bin/nl/FluentValidation.resources.dll" publishTime="04/15/2012 13:57:36" />
+    <file relUrl="bin/AppTour.DataAccess.Entity.pdb" publishTime="07/01/2012 16:44:37" />
+    <file relUrl="bin/sv/FluentValidation.resources.dll" publishTime="04/15/2012 13:57:36" />
+    <file relUrl="bin/AppTour.DataAccess.Entity.dll" publishTime="07/01/2012 16:44:37" />
+    <file relUrl="bin/AppTour.Model.Models.pdb" publishTime="07/08/2012 13:21:11" />
+    <file relUrl="Web.config" publishTime="07/08/2012 13:28:59" />
+  </publishProfile>
+</publishData>

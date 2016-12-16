@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F4C81ED8-5754-4DFB-A0C4-D4C619D1B64B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AppTour.Business.Services</RootNamespace>
+    <AssemblyName>AppTour.Business.Services</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\System.Web.Providers.Core.1.0\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Agent\AgentService.cs" />
+    <Compile Include="App\AppService.cs" />
+    <Compile Include="Author\AuthorService.cs" />
+    <Compile Include="City\CityService.cs" />
+    <Compile Include="Classification\ClassificationService.cs" />
+    <Compile Include="Comment\CommentService.cs" />
+    <Compile Include="Country\CountryService.cs" />
+    <Compile Include="Enterprise\EnterpriseService.cs" />
+    <Compile Include="Helpers\ExtensionMethods.cs" />
+    <Compile Include="Language\LanguageService.cs" />
+    <Compile Include="Observable\ObservableService.cs" />
+    <Compile Include="PointAttribute\PointAttributeService.cs" />
+    <Compile Include="Point\PointService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchProfile\SearchProfileService.cs" />
+    <Compile Include="Service\SearchService.cs" />
+    <Compile Include="Theme\ThemeService.cs" />
+    <Compile Include="Topic\TopicService.cs" />
+    <Compile Include="Translation\TranslationService.cs" />
+    <Compile Include="User\UserService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="PointAttributeService_InsertAttribute.sequencediagram" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AppTour.Business.ServiceContracts\AppTour.Business.ServiceContracts.csproj">
+      <Project>{A90ED4E9-2DC1-4687-9F28-CB70FBB37022}</Project>
+      <Name>AppTour.Business.ServiceContracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AppTour.DataAccess.Repository\AppTour.DataAccess.Repository.csproj">
+      <Project>{E8CD902C-8F59-4180-8779-6CE3EDD5AFFD}</Project>
+      <Name>AppTour.DataAccess.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AppTour.Model.Models\AppTour.Model.Models.csproj">
+      <Project>{C2BA513B-4078-4A4D-A5CE-40F31B896A98}</Project>
+      <Name>AppTour.Model.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="PointAttributeService_InsertAttribute.sequencediagram.layout">
+      <DependentUpon>PointAttributeService_InsertAttribute.sequencediagram</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,28 @@
+﻿@model AppTour.Model.Models.PointsAttributes.PointAttributeModel
+<fieldset>
+    <legend>@ViewRes.Attribute.Titulo</legend>
+    <div class="ui-widget">
+        <table class="ui-widget ui-widget-content">
+            <thead>
+                <tr>
+                    <th class="ui-widget-header">
+                        @ViewRes.Attribute.KeyPair
+                    </th>
+                    <th class="ui-widget-header">
+                        @ViewRes.Attribute.Value_string
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => modelItem.KeyPair)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => modelItem.Value_string)
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</fieldset>

@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E8CD902C-8F59-4180-8779-6CE3EDD5AFFD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AppTour.DataAccess.Repository</RootNamespace>
+    <AssemblyName>AppTour.DataAccess.Repository</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Agent\AgentRepository.cs" />
+    <Compile Include="App\AppRepository.cs" />
+    <Compile Include="Author\AuthorRepository.cs" />
+    <Compile Include="City\CityRepository.cs" />
+    <Compile Include="Classification\ClassificationRepository.cs" />
+    <Compile Include="Comment\CommentRepository.cs" />
+    <Compile Include="Country\CountryRepository.cs" />
+    <Compile Include="Enterprise\EnterpriseRepository.cs" />
+    <Compile Include="Language\LanguageRepository.cs" />
+    <Compile Include="Picture\PictureRepository.cs" />
+    <Compile Include="PointAttribute\PointAttributeRepository.cs" />
+    <Compile Include="Point\PointRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchProfile\SearchProfileRepository.cs" />
+    <Compile Include="Theme\ThemeRepository.cs" />
+    <Compile Include="Topic\TopicRepository.cs" />
+    <Compile Include="Translation\TranslationRepository.cs" />
+    <Compile Include="User\UserRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AppTour.DataAccess.Entity\AppTour.DataAccess.Entity.csproj">
+      <Project>{26AC617D-FE05-4C9D-AD5A-8E68659897D7}</Project>
+      <Name>AppTour.DataAccess.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AppTour.Model.Models\AppTour.Model.Models.csproj">
+      <Project>{C2BA513B-4078-4A4D-A5CE-40F31B896A98}</Project>
+      <Name>AppTour.Model.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

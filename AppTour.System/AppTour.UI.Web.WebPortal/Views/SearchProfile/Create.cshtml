@@ -1,0 +1,71 @@
+﻿@model AppTour.Model.Models.SearchProfile.SearchProfileModel
+@{
+    ViewBag.Title = @ViewRes.SearchProfile.Novo;
+}
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+        $("input:submit, button, #button").button();
+
+        $("#Name").addClass("text ui-widget-content ui-corner-all");
+        $("#PointsRangeDistance").addClass("text ui-widget-content ui-corner-all");
+        $("#EventsSearchDays").addClass("text ui-widget-content ui-corner-all");
+        $("#SearchCriteria").addClass("text ui-widget-content ui-corner-all");
+
+        $("#save").button({ icons: { primary: "ui-icon-tag"} });
+    });
+</script>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>@ViewRes.SearchProfile.SeachProfileHeader</legend>
+        <div>
+            <div style="float: left; width: 50%;">
+                <div class="editor-label">
+                    @ViewRes.SearchProfile.Name
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Name)
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
+                <div class="editor-label">
+                    @ViewRes.SearchProfile.PointsRangeDistance
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.PointsRangeDistance)
+                    @Html.ValidationMessageFor(model => model.PointsRangeDistance)
+                </div>
+                <div class="editor-label">
+                    @ViewRes.SearchProfile.EventsSearchDays
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.EventsSearchDays)
+                    @Html.ValidationMessageFor(model => model.EventsSearchDays)
+                </div>
+                <div class="editor-label">
+                    @ViewRes.SearchProfile.SearchCriteria
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.SearchCriteria)
+                    @Html.ValidationMessageFor(model => model.SearchCriteria)
+                </div>
+                <p>
+                    <input type="submit" value="@ViewRes.SharedStrings.Save" id="save" />
+                </p>
+            </div>
+            <div style="float: right; width: 40%; margin: 0 auto;">
+                <fieldset>
+                    <legend>@ViewRes.SearchProfile.SearchProfileTopics</legend>
+                    @Html.EditorFor(model => model.SearchProfileCheckBoxs)
+                </fieldset>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink(@ViewRes.SearchProfile.Lista, "MyProfiles", new { controller = "SearchProfile" }, new { id = "button" })
+</div>

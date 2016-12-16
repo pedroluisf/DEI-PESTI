@@ -1,0 +1,79 @@
+﻿@model IEnumerable<AppTour.Model.Models.Author.AuthorModel>
+@{
+    ViewBag.Title = @ViewRes.Author.Titulo;
+}
+<script type="text/javascript">
+    $(function () {
+        $(".jbutton").button();
+        $(".edit").button({
+            icons: {
+                primary: "ui-icon-pencil"
+            }
+            , text: false
+        });
+        $(".trash").button({
+            icons: {
+                primary: "ui-icon-trash"
+            }, text: false
+        });
+    });
+</script>
+<p>
+    @Html.ActionLink(@ViewRes.Author.Novo, "Create", new { controller = "Author" }, new { @class = "jbutton" })
+</p>
+<div class="ui-widget">
+    <table class="ui-widget ui-widget-content">
+        <thead>
+            <th class="ui-widget-header">
+                @ViewRes.Author.Empresa
+            </th>
+            <th class="ui-widget-header">
+                @ViewRes.Author.Nome
+            </th>
+            <th class="ui-widget-header">
+                @ViewRes.Author.RealName
+            </th>
+            <th class="ui-widget-header">
+                @ViewRes.Author.Email
+            </th>
+            <th class="ui-widget-header" style="text-align: center;">
+                @ViewRes.SharedStrings.CreationDate
+            </th>
+            <th class="ui-widget-header" style="text-align: center;">
+                @ViewRes.SharedStrings.UpdateDate
+            </th>
+            <th class="ui-widget-header" style="text-align: center;">
+            </th>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Enterprise.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RealName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td style="text-align: center;">
+                        @Html.DisplayFor(modelItem => item.CreationDate)
+                    </td>
+                    <td style="text-align: center;">
+                        @Html.DisplayFor(modelItem => item.UpdateDate)
+                    </td>
+                    <td style="text-align: center;">
+                        <a href="@Url.Action("Edit", new { id = item.Id })" class="edit">@ViewRes.SharedStrings.Editar</a>
+                        <a href="@Url.Action("Delete", new { id = item.Id })"
+                            class="trash">@ViewRes.SharedStrings.Apagar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

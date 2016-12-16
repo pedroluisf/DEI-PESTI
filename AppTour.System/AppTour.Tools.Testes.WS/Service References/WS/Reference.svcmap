@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d7db6c27-6f15-4e27-b6df-71ff64d30579" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://apptour.dei.isep.ipp.pt/WS/AppTourWS.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="AppTourWS.xsd" MetadataType="Schema" ID="3e26ca89-520a-408f-814f-55f494a8ce13" SourceId="1" SourceUrl="http://apptour.dei.isep.ipp.pt/WS/AppTourWS.svc?xsd=xsd3" />
+    <MetadataFile FileName="AppTourWS1.xsd" MetadataType="Schema" ID="2babd5ee-b2a4-4a3a-be63-3f298994025b" SourceId="1" SourceUrl="http://apptour.dei.isep.ipp.pt/WS/AppTourWS.svc?xsd=xsd0" />
+    <MetadataFile FileName="AppTourWS2.xsd" MetadataType="Schema" ID="48cecd2e-e60e-41ce-9b42-51f979b7029a" SourceId="1" SourceUrl="http://apptour.dei.isep.ipp.pt/WS/AppTourWS.svc?xsd=xsd2" />
+    <MetadataFile FileName="AppTourWS3.xsd" MetadataType="Schema" ID="a1519c64-bf24-4008-9524-5eba1ca3b44d" SourceId="1" SourceUrl="http://apptour.dei.isep.ipp.pt/WS/AppTourWS.svc?xsd=xsd1" />
+    <MetadataFile FileName="AppTourWS.wsdl" MetadataType="Wsdl" ID="6eba53e0-b368-4b1e-bfed-0b1270e9fd3a" SourceId="1" SourceUrl="http://apptour.dei.isep.ipp.pt/WS/AppTourWS.svc?wsdl" />
+    <MetadataFile FileName="AppTourWS.disco" MetadataType="Disco" ID="bf5b048f-382b-4296-90cb-8e6f79ce9563" SourceId="1" SourceUrl="http://apptour.dei.isep.ipp.pt/WS/AppTourWS.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

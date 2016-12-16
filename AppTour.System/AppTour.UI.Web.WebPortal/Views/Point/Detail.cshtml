@@ -1,0 +1,330 @@
+﻿@model AppTour.Model.Models.Point.PointModel
+@{
+    ViewBag.Title = @Model.Name;
+    string RealCoordenada = string.Empty;
+    string[] ArrayCoordenada = Model.Coordenate.Split(',');
+
+    string lat = string.Empty;
+    string longitude = string.Empty;
+
+
+    if (ArrayCoordenada.Length == 4)
+    {
+        RealCoordenada = ArrayCoordenada[0] + '.' + ArrayCoordenada[1] + "," + ArrayCoordenada[2] + '.' + ArrayCoordenada[3];
+        lat = ArrayCoordenada[0] + '.' + ArrayCoordenada[1];
+        longitude = ArrayCoordenada[2] + '.' + ArrayCoordenada[3];
+    }
+
+    if (RealCoordenada == string.Empty)
+    {
+        RealCoordenada = Model.Coordenate;
+        lat = ArrayCoordenada[0];
+        longitude = ArrayCoordenada[1];
+
+    }
+}
+<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript">
+</script>
+<script src="@Url.Content("~/Scripts/jquery.raty.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    function doNoting() {
+        return false;
+    }
+
+    (function () {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+</script>
+<meta property="og:description" content="@Model.Name - @Model.Address" />
+<h2>
+    @Model.Name</h2>
+<div id="star">
+</div>
+<h3>
+    @{
+        string topicos = string.Empty;
+        foreach (var item in Model.Topics)
+        {
+            topicos += item.Name + " ";
+        }
+        <text>@topicos</text>
+    }
+</h3>
+<link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/shadowbox/shadowbox.css")">
+<script type="text/javascript" src="@Url.Content("~/Content/shadowbox/shadowbox.js")"></script>
+<script type="text/javascript">
+    Shadowbox.init({
+        handleOversize: "drag",
+        modal: false
+    });
+</script>
+<script type="text/javascript">
+    function initialize(lat, log) {
+        if (lat == null) {
+            lat = 0.0;
+        }
+        if (log == null) {
+            log = 0.0;
+        }
+        var myOptions = {
+            zoom: 13,
+            center: new google.maps.LatLng(lat, log),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById('map_canvas'),
+      myOptions);
+
+        var marker = new google.maps.Marker({
+            position: map.getCenter(),
+            map: map,
+            title: '@Model.Name'
+        });
+    }
+    $(function () {
+        $(document).ready(function () { initialize(@lat, @longitude); });
+    });
+</script>
+<div class="left" style="width: 50%">
+    @{
+        if (Model.Attributes.Count > 0)
+        { 
+        <hr />
+        <h3>
+            @ViewRes.Attribute.Titulo</h3>
+        }
+    }
+    @foreach (var valor in Model.Attributes)
+    {
+        string tipo = @valor.Value_Type;
+        
+        <p>
+            <strong>@valor.KeyPair</strong>
+            @switch (tipo)
+            {
+                case "System.Decimal":
+                <text>@valor.Value_number</text>
+                 break;
+                case "System.DateTime":
+                <text>@valor.Value_Date</text>
+                 break;
+                case "System.Boolean":
+                <img src="@Url.Content("~/Content/images/" + @valor.Value_bool + ".png")" alt="@valor.Value_bool" />
+                                                                                          break;
+                default:
+                <text>@valor.Value_string</text>
+                 break;
+            }
+        </p>
+    }
+    <hr />
+    <div class="display-field">
+        <p>@Model.Address, @Model.PostalCode</p>
+        <p>@Model.City.Name - @Model.City.Country.CountryName</p>
+    </div>
+    <div class="display-field">
+        <img src="@Url.Content("~/Content/images/url.png")" alt="URL" style="vertical-align: middle;"/>
+        <a href="@Model.URL" target="_blank">@Model.Name</a> |
+        <img src="@Url.Content("~/Content/images/phone.png")" alt="Phone" style="vertical-align: middle;" />
+        @Model.PhoneNumber
+    </div>
+    <div>
+        @{
+            if (Model.Pictures != null && Model.Pictures.Count > 0)
+            {
+            <hr />
+            <h3>
+                Imagens</h3>
+                foreach (var item in Model.Pictures)
+                {
+            <a href="@item.Picture_URL" rel="shadowbox[same]"><span class="ShowPartialImagemInline" style="background-image: url(@item.Picture_URL);">
+            </span></a>
+            
+                }
+            }
+        }
+    </div>
+    <g:plusone size="small" annotation="none"></g:plusone>
+    <a name="fb_share" type="icon" share_url="@Request.Url.ToString()"></a> <a href="https://twitter.com/share" class="twitter-share-button" data-text="@Model.Name - @Model.Address"
+            data-count="none" data-hashtags="apptour">Tweet</a>
+        <script type="text/javascript">            !function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } } (document, "script", "twitter-wjs");</script>
+</div>
+<div class="right" style="width: 45%; height: 400px;">
+    <div id="map_canvas" style="width: 100%; height: 100%; margin: 0 auto; background-color: #eee;">
+    </div>
+</div>
+<div class="clear">
+</div>
+<div style="width: 50%;">
+    @{
+        double media = 0.0;
+        bool flag = false;
+        double total = 0.0;
+        if (Model.Classifications.Count > 0)
+        {
+            Model.Classifications.ToList().ForEach(x =>
+            {
+                media += x.Classification;
+                if (Session.Count > 2)
+                    if (!flag && x.User.Id.ToString() == Session["USERNAME_KEY"].ToString())
+                        flag = true;
+            });
+
+            media /= Model.Classifications.Count;
+            total = (media * 100 / (Model.Classifications.Count == 0 ? 5 : Model.Classifications.Count * 5));
+        }     
+        
+        
+        <div class="left" style="vertical-align: middle; margin-top: 8px; width: 60%; display: inline-block;">
+        </div>
+        <div class="right" style="vertical-align: middle; text-align: center;">
+            @if (!flag)
+            {  
+                <script type="text/javascript">
+                    $(function () {
+                        $('#star').raty({
+                            scoreName: 'entity.score',
+                            number: 5,
+                            score:parseInt('@media'),
+                            click: function (score, evt) {
+                                var data = 'userId=@Session["USERNAME_KEY"]&pointId=@Model.Id&Classifications=' + score;
+                             
+                                $.ajax({
+							            url: "@Url.Content("~/Point/InsertVote")",
+							            secureuri: false,
+							            data: data,
+							            dataType: 'text',
+                                        type: "POST",
+							            success: function (data, status) {
+								            if (status == 'success') {
+									            if (data == 'sucesso') {									    
+										            setTimeout(function() { location.reload(); }, 500);
+									            }
+                                                else {
+                                                    alert(data);
+                                                }
+								            }
+							            },
+							            error: function (data, status, e) {
+								            alert(e);
+							            }
+					                });
+                                }
+                             });
+                        });
+                </script>
+            }
+            else
+            { 
+                <script type="text/javascript">
+                    $(function () {
+                        $('#star').raty({
+                            scoreName: 'entity.score',
+                            readOnly: true,
+                            number: 5,
+                            score: parseInt('@media')
+                        });
+                    });
+                </script>
+            }
+        </div>
+        <div class="clear">
+        </div>
+    }
+</div>
+<div>
+    <fieldset id="field">
+        <legend>Comentários</legend>
+        @{
+            string user = string.Empty;
+            if (Model.Comments != null && Model.Comments.Count > 0)
+            {
+                foreach (var comment in @Model.Comments)
+                {
+            <div class="left">
+                <strong>@comment.User.RealName</strong><br />
+                <small>@comment.CreationDate</small>
+                <p>@comment.Comment
+                </p>
+            </div>
+            <div class="right">
+                @if (Session != null && Session.Count > 0 && Session["USERNAME"] != null)
+                {
+                    <a href="@Url.Action("Report", new { id = comment.Id })" class="trash">@ViewRes.SharedStrings.Apagar</a>
+                }
+            </div>
+            <div class="clear">
+            </div>
+                }
+            }
+            else
+            {
+            <text><small>Sem comentários</small></text>
+            }
+            <hr />
+            if (Session != null && Session.Count > 0 && Session["USERNAME"] != null)
+            {
+            <script type="text/javascript">
+                $(function () {
+                    $("input:submit, input:checkbox, button, #button").button();
+                    $("#msg").addClass("text ui-widget-content ui-corner-all");
+                    $("#name").addClass("text ui-widget-content ui-corner-all");
+                    $("#save").button({ icons: { primary: "ui-icon-tag"} });
+                    $(".trash").button({
+                        icons: {
+                            primary: "ui-icon-alert"
+                        }, text: false
+                    });
+                                      
+                    $("#save").click(function () {
+                        $("#save").hide("slow");
+                        var data = $("#sendcomment").serialize();
+                        $.ajax(
+						{
+							url: "@Url.Content("~/Point/InsertComment")",
+							secureuri: false,
+							data: data,
+							dataType: 'text',
+                            type: "POST",
+							success: function (data, status) {
+								if (status == 'success') {
+									if (data == 'sucesso') {									    
+										setTimeout(function() { location.reload(); }, 500);
+									}
+                                    else {
+                                        alert(data);
+                                        $("#save").show("slow");
+                                    }
+								}
+							},
+							error: function (data, status, e) {
+								alert(e);
+                                $("#save").show("slow");
+							}
+					  });
+                    });
+                });
+            </script>
+        
+            <form id="sendcomment" action="javascript:doNoting(); return false;">
+            <input type="hidden" name="userId" value="@Session["USERNAME_KEY"]" />
+            <input type="hidden" name="pointId" value="@Model.Id" />
+            <div class="editor-label">
+                @Html.Label(@ViewRes.SharedStrings.Utilizador)
+            </div>
+            <div class="editor-field">
+                <input type="text" name="name" readonly id="name" size="50" value="@Session["REALNAME"]"/>
+            </div>
+            <div class="editor-label">
+                Message
+            </div>
+            <div class="editor-field">
+                <textarea name="msg" id="msg" rows="10" cols="70"></textarea>
+            </div>
+            <input type="submit" id="save" value="@ViewRes.SharedStrings.Novo" />
+            </form>
+            }
+        }
+    </fieldset>
+</div>

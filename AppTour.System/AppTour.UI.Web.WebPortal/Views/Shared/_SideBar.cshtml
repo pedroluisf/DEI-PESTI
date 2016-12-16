@@ -1,0 +1,153 @@
+﻿<script type="text/javascript">
+    jQuery(document).ready(function () {
+        $("#menu1").text("+" + " @ViewRes.SharedStrings.Menu1");
+        $("#menu2").text("+" + " @ViewRes.SharedStrings.Administrador");
+        $("#menu3").text("+" + " @ViewRes.SharedStrings.GestorConteudo");
+
+
+        $(".theme").css("cursor", "pointer");
+        $(".theme").css("cursor", "hand");
+
+        $("#menu1").css("cursor", "pointer");
+        $("#menu1").css("cursor", "hand");
+
+        $("#menu2").css("cursor", "pointer");
+        $("#menu2").css("cursor", "hand");
+
+        $("#menu3").css("cursor", "pointer");
+        $("#menu3").css("cursor", "hand");
+
+        jQuery(".theme").click(function () {
+            var item = $(this).attr("title");
+            $("#" + item).toggle("normal");
+        });
+
+        jQuery("#menu1").click(function () {
+            if ($("#menu1_1").is(":hidden")) {
+                $("#menu1").text("-" + " @ViewRes.SharedStrings.Menu1");
+            }
+            else {
+                $("#menu1").text("+" + " @ViewRes.SharedStrings.Menu1");
+            }
+            $("#menu1_1").slideToggle(500);
+        });
+        jQuery("#menu11").click(function () {
+            if ($("#menu11_1").is(":hidden")) {
+                $("#menu11").text("-" + " @ViewRes.SharedStrings.Conteudo");
+            }
+            else {
+                $("#menu11").text("+" + " @ViewRes.SharedStrings.Conteudo");
+            }
+            $("#menu11_1").slideToggle(500);
+        });
+        jQuery("#menu2").click(function () {
+            if ($("#menu2_1").is(":hidden")) {
+                $("#menu2").text("-" + " @ViewRes.SharedStrings.Administrador");
+            }
+            else {
+                $("#menu2").text("+" + " @ViewRes.SharedStrings.Administrador");
+            }
+            $("#menu2_1").slideToggle(500);
+        });
+        jQuery("#menu3").click(function () {
+            if ($("#menu3_1").is(":hidden")) {
+                $("#menu3").text("-" + " @ViewRes.SharedStrings.GestorConteudo");
+            }
+            else {
+                $("#menu3").text("+" + " @ViewRes.SharedStrings.GestorConteudo");
+            }
+            $("#menu3_1").slideToggle(500);
+        });
+    });
+</script>
+<div class="box drop-shadow lifted">
+    <p id="menu1">@ViewRes.SharedStrings.Menu1</p>
+    <div class="naviagator" id="menu1_1" style="display: none;">
+        <ul>
+            <li>@Html.ActionLink(@ViewRes.Search.Find, "Index", "Search")</li>
+            @if (Session.Keys.Count <= 2)
+            {
+                <li>@Html.ActionLink(@ViewRes.SharedStrings.Registar, "Register", "Account")</li>
+            }
+            <li>@Html.ActionLink(@ViewRes.SharedStrings.Sobre, "About", "Home")</li>
+        </ul>
+        <div style="text-align: center; margin: 10px;">
+            <p>
+                @{ 
+                    IList<AppTour.Model.Models.Language.LanguageModel> linguas = new AppTour.Business.Services.Language.LanguageService().GetActiveLanguages();
+
+                    foreach (AppTour.Model.Models.Language.LanguageModel lingua in linguas)
+                    {
+                    <a href="@Url.Action("ChangeCulture", "Language", new { lang = lingua.ISO2, returnUrl = this.Request.RawUrl })">
+                        <img src="@Url.Content("~/Content/images/languages/" + lingua.ISO2 + ".png")" alt="@lingua.Name (@lingua.ISO2)" /></a>
+                    } 
+                }
+            </p>
+        </div>
+    </div>
+</div>
+<div class="box drop-shadow lifted">
+    <p id="menu11">
+        <!--@ViewRes.SharedStrings.Conteudo-->
+    </p>
+    <div class="naviagator" id="menu11_1">
+        @{
+            int i = 0;
+            IList<AppTour.Model.Models.Theme.ThemeModel> Temas = new AppTour.Business.Services.Theme.ThemeService().GetActiveThemes();
+            foreach (AppTour.Model.Models.Theme.ThemeModel tema in Temas)
+            {
+            <h1 title="topic-@i" class="theme">@tema.Name</h1>
+            <div id="topic-@i" style="display: none;">
+                <ul>
+                    @{ 
+                IList<AppTour.Model.Models.Topic.TopicModel> Topics = new AppTour.Business.Services.Topic.TopicService().GetActiveTopics(tema);
+                    }
+                    @foreach (AppTour.Model.Models.Topic.TopicModel item in Topics)
+                    { 
+                        <li><a href="@Url.Action("Show", "Point", new { id = Html.Encode(item.Name) })">@item.Name</a></li>
+                    }
+                </ul>
+                @{
+                    i++;
+                }
+            </div>
+            }
+        }
+    </div>
+</div>
+@if (Session.Keys.Count > 2)
+{
+    if (Session["USERNAME_ROLE"].Equals("Administrador"))
+    {
+    <div class="box drop-shadow lifted">
+        <p id="menu2">
+            @ViewRes.SharedStrings.Administrador</p>
+        <div class="naviagator" id="menu2_1" style="display: none;">
+            <ul>
+                <li>@Html.ActionLink(@ViewRes.Menu.Empresa, "Index", "Enterprise")</li>
+                <li>@Html.ActionLink(@ViewRes.Menu.Aplicacoes, "Index", "App")</li>
+                <li>@Html.ActionLink(@ViewRes.Menu.Autores, "Index", "Author")</li>
+                <li>@Html.ActionLink(@ViewRes.Menu.Paises, "Index", "Country")</li>
+                <li>@Html.ActionLink(@ViewRes.Menu.Cidades, "Index", "City")</li>
+                <li>@Html.ActionLink(@ViewRes.Menu.Linguas, "Index", "Language")</li>
+                <li>@Html.ActionLink(@ViewRes.Menu.Temas, "Index", "Theme")</li>
+                <li>@Html.ActionLink(@ViewRes.Menu.Topic, "Index", "Topic")</li>
+                <li>@Html.ActionLink(@ViewRes.Menu.Points, "Index", "Point")</li>
+            </ul>
+        </div>
+    </div> 
+    }
+    if (Session["USERNAME_ROLE"].Equals("Administrador") || Session["USERNAME_ROLE"].Equals("Gestor de Conteúdo"))
+    {
+    <div class="box drop-shadow lifted">
+        <p id="menu3">
+            @ViewRes.SharedStrings.GestorConteudo</p>
+        <div class="naviagator" id="menu3_1" style="display: none;">
+            <ul>
+                <li><a href="#">Pontos</a></li>
+                <li><a href="#">Resolver denuncias</a></li>
+            </ul>
+        </div>
+    </div> 
+    }
+}

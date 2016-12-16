@@ -1,0 +1,2018 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AppTourModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="AppTourModelStoreContainer">
+          <EntitySet Name="AGENTS" EntityType="AppTourModel.Store.AGENTS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="APP" EntityType="AppTourModel.Store.APP" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AUTHOR" EntityType="AppTourModel.Store.AUTHOR" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CITY" EntityType="AppTourModel.Store.CITY" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CLASSIFICATION" EntityType="AppTourModel.Store.CLASSIFICATION" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="COMMENT" EntityType="AppTourModel.Store.COMMENT" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="COUNTRY" EntityType="AppTourModel.Store.COUNTRY" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ENTERPRISE" EntityType="AppTourModel.Store.ENTERPRISE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EVENT" EntityType="AppTourModel.Store.EVENT" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="EVENT_TOPIC" EntityType="AppTourModel.Store.EVENT_TOPIC" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HOUR" EntityType="AppTourModel.Store.HOUR" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HOURS" EntityType="AppTourModel.Store.HOURS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LANGUAGE" EntityType="AppTourModel.Store.LANGUAGE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PICTURE" EntityType="AppTourModel.Store.PICTURE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="POINT" EntityType="AppTourModel.Store.POINT" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="POINT_TOPIC" EntityType="AppTourModel.Store.POINT_TOPIC" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="POINTS_ATTRIBUTES" EntityType="AppTourModel.Store.POINTS_ATTRIBUTES" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SEARCH_PROFILE" EntityType="AppTourModel.Store.SEARCH_PROFILE" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SEARCH_PROFILE_TOPIC" EntityType="AppTourModel.Store.SEARCH_PROFILE_TOPIC" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="THEME" EntityType="AppTourModel.Store.THEME" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TOPIC" EntityType="AppTourModel.Store.TOPIC" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TRANSLATIONS" EntityType="AppTourModel.Store.TRANSLATIONS" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="USER" EntityType="AppTourModel.Store.USER" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_APP_ENTERPRISE" Association="AppTourModel.Store.FK_APP_ENTERPRISE">
+            <End Role="ENTERPRISE" EntitySet="ENTERPRISE" />
+            <End Role="APP" EntitySet="APP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ATTRIBUTE_POINT" Association="AppTourModel.Store.FK_ATTRIBUTE_POINT">
+            <End Role="POINT" EntitySet="POINT" />
+            <End Role="POINTS_ATTRIBUTES" EntitySet="POINTS_ATTRIBUTES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AUTHOR_ENTERPRISE" Association="AppTourModel.Store.FK_AUTHOR_ENTERPRISE">
+            <End Role="ENTERPRISE" EntitySet="ENTERPRISE" />
+            <End Role="AUTHOR" EntitySet="AUTHOR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CITY_COUNTRIE" Association="AppTourModel.Store.FK_CITY_COUNTRIE">
+            <End Role="COUNTRY" EntitySet="COUNTRY" />
+            <End Role="CITY" EntitySet="CITY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CLASSIFICATION_EVENT" Association="AppTourModel.Store.FK_CLASSIFICATION_EVENT">
+            <End Role="EVENT" EntitySet="EVENT" />
+            <End Role="CLASSIFICATION" EntitySet="CLASSIFICATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CLASSIFICATION_POINT" Association="AppTourModel.Store.FK_CLASSIFICATION_POINT">
+            <End Role="POINT" EntitySet="POINT" />
+            <End Role="CLASSIFICATION" EntitySet="CLASSIFICATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CLASSIFICATION_USER" Association="AppTourModel.Store.FK_CLASSIFICATION_USER">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="CLASSIFICATION" EntitySet="CLASSIFICATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMMENT_EVENT" Association="AppTourModel.Store.FK_COMMENT_EVENT">
+            <End Role="EVENT" EntitySet="EVENT" />
+            <End Role="COMMENT" EntitySet="COMMENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMMENT_POINTS" Association="AppTourModel.Store.FK_COMMENT_POINTS">
+            <End Role="POINT" EntitySet="POINT" />
+            <End Role="COMMENT" EntitySet="COMMENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMMENT_USER" Association="AppTourModel.Store.FK_COMMENT_USER">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="COMMENT" EntitySet="COMMENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EVENT_PICTURES_EVENT" Association="AppTourModel.Store.FK_EVENT_PICTURES_EVENT">
+            <End Role="EVENT" EntitySet="EVENT" />
+            <End Role="PICTURE" EntitySet="PICTURE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EVENT_POINT" Association="AppTourModel.Store.FK_EVENT_POINT">
+            <End Role="POINT" EntitySet="POINT" />
+            <End Role="EVENT" EntitySet="EVENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EVENT_TOPIC_EVENT" Association="AppTourModel.Store.FK_EVENT_TOPIC_EVENT">
+            <End Role="EVENT" EntitySet="EVENT" />
+            <End Role="EVENT_TOPIC" EntitySet="EVENT_TOPIC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EVENT_TOPIC_TOPIC" Association="AppTourModel.Store.FK_EVENT_TOPIC_TOPIC">
+            <End Role="TOPIC" EntitySet="TOPIC" />
+            <End Role="EVENT_TOPIC" EntitySet="EVENT_TOPIC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOURS_EVENT" Association="AppTourModel.Store.FK_HOURS_EVENT">
+            <End Role="EVENT" EntitySet="EVENT" />
+            <End Role="HOURS" EntitySet="HOURS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOURS_HOUR" Association="AppTourModel.Store.FK_HOURS_HOUR">
+            <End Role="HOUR" EntitySet="HOUR" />
+            <End Role="HOURS" EntitySet="HOURS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOURS_POINT" Association="AppTourModel.Store.FK_HOURS_POINT">
+            <End Role="POINT" EntitySet="POINT" />
+            <End Role="HOURS" EntitySet="HOURS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PICTURE_POINT" Association="AppTourModel.Store.FK_PICTURE_POINT">
+            <End Role="POINT" EntitySet="POINT" />
+            <End Role="PICTURE" EntitySet="PICTURE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POINT_TOPIC_POINT" Association="AppTourModel.Store.FK_POINT_TOPIC_POINT">
+            <End Role="POINT" EntitySet="POINT" />
+            <End Role="POINT_TOPIC" EntitySet="POINT_TOPIC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POINT_TOPIC_TOPIC" Association="AppTourModel.Store.FK_POINT_TOPIC_TOPIC">
+            <End Role="TOPIC" EntitySet="TOPIC" />
+            <End Role="POINT_TOPIC" EntitySet="POINT_TOPIC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POINTS_CITY" Association="AppTourModel.Store.FK_POINTS_CITY">
+            <End Role="CITY" EntitySet="CITY" />
+            <End Role="POINT" EntitySet="POINT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SEARCH_PROFILE_TOPIC_SEARCH_PROFILE" Association="AppTourModel.Store.FK_SEARCH_PROFILE_TOPIC_SEARCH_PROFILE">
+            <End Role="SEARCH_PROFILE" EntitySet="SEARCH_PROFILE" />
+            <End Role="SEARCH_PROFILE_TOPIC" EntitySet="SEARCH_PROFILE_TOPIC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SEARCH_PROFILE_TOPIC_TOPIC" Association="AppTourModel.Store.FK_SEARCH_PROFILE_TOPIC_TOPIC">
+            <End Role="TOPIC" EntitySet="TOPIC" />
+            <End Role="SEARCH_PROFILE_TOPIC" EntitySet="SEARCH_PROFILE_TOPIC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SEARCH_PROFILE_USER" Association="AppTourModel.Store.FK_SEARCH_PROFILE_USER">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="SEARCH_PROFILE" EntitySet="SEARCH_PROFILE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TOPIC_THEME" Association="AppTourModel.Store.FK_TOPIC_THEME">
+            <End Role="THEME" EntitySet="THEME" />
+            <End Role="TOPIC" EntitySet="TOPIC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANSLATIONS_LANGUAGE" Association="AppTourModel.Store.FK_TRANSLATIONS_LANGUAGE">
+            <End Role="LANGUAGE" EntitySet="LANGUAGE" />
+            <End Role="TRANSLATIONS" EntitySet="TRANSLATIONS" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AGENTS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="FULL_CLASS_NAME" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="DLL_FILE" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="MAX_REQUEST_PER_DAY" Type="int" Nullable="false" />
+          <Property Name="PERIODICITY" Type="int" Nullable="false" />
+          <Property Name="RATING" Type="int" Nullable="false" />
+          <Property Name="LAST_REFERENCE" Type="nvarchar(max)" />
+          <Property Name="LAST_EXECUTION_DATE" Type="datetime" />
+          <Property Name="IS_ACTIVE" Type="bit" Nullable="false" />
+          <Property Name="CREATION_DATE" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="APP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_ENTERPRISE" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="DESCRIPTION" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="VERSION" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="URL" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="CREATION_DATE" Type="datetime" Nullable="false" />
+          <Property Name="UPDATE_DATE" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AUTHOR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_ENTERPRISE" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="REALNAME" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="EMAIL" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="CREATION_DATE" Type="datetime" Nullable="false" />
+          <Property Name="UPDATE_DATE" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CITY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_COUNTRY" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" Nullable="false" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="CLASSIFICATION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_POINT" Type="uniqueidentifier" />
+          <Property Name="ID_EVENT" Type="uniqueidentifier" />
+          <Property Name="CLASSIFICATION" Type="int" Nullable="false" />
+          <Property Name="ID_USER" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CREATION_DATE" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COMMENT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_USER" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_POINT" Type="uniqueidentifier" />
+          <Property Name="ID_EVENT" Type="uniqueidentifier" />
+          <Property Name="COMMENT" Type="nvarchar" Nullable="false" MaxLength="800" />
+          <Property Name="IS_ACTIVE" Type="bit" Nullable="false" />
+          <Property Name="IS_REPORTED" Type="bit" Nullable="false" />
+          <Property Name="CREATION_DATE" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="COUNTRY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ISO" Type="nchar" Nullable="false" MaxLength="2" />
+          <Property Name="NAME" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="COUNTRY_NAME" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="ISO3" Type="nchar" MaxLength="3" />
+          <Property Name="COUNTRY_CODE" Type="smallint" />
+        </EntityType>
+        <EntityType Name="ENTERPRISE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="DESCRIPTION" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="CREATION_DATE" Type="datetime" Nullable="false" />
+          <Property Name="UPDATE_DATE" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EVENT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="ID_POINT" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="DESCRIPTION" Type="nvarchar" Nullable="false" MaxLength="400" />
+          <Property Name="URL" Type="nvarchar" MaxLength="250" />
+          <Property Name="SOURCE_URL" Type="nvarchar" Nullable="false" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="EVENT_TOPIC">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_EVENT" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_TOPIC" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HOUR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="HOUR_DESCRIPTION" Type="nvarchar" MaxLength="250" />
+          <Property Name="BEGIN_DATE" Type="date" Nullable="false" />
+          <Property Name="END_DATE" Type="date" Nullable="false" />
+          <Property Name="BEGIN_TIME" Type="time" Nullable="false" />
+          <Property Name="END_TIME" Type="time" Nullable="false" />
+          <Property Name="MONDAY" Type="bit" />
+          <Property Name="TUESDAY" Type="bit" />
+          <Property Name="WEDNESDAY" Type="bit" />
+          <Property Name="THURSDAY" Type="bit" />
+          <Property Name="FRIDAY" Type="bit" />
+          <Property Name="SATURDAY" Type="bit" />
+          <Property Name="SUNDAY" Type="bit" />
+          <Property Name="HOLIDAY" Type="bit" />
+        </EntityType>
+        <EntityType Name="HOURS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_EVENT" Type="uniqueidentifier" />
+          <Property Name="ID_POINT" Type="uniqueidentifier" />
+          <Property Name="ID_HOUR" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LANGUAGE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="ISO2" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="IS_ACTIVE" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PICTURE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_POINT" Type="uniqueidentifier" />
+          <Property Name="ID_EVENT" Type="uniqueidentifier" />
+          <Property Name="PIC_URL" Type="nvarchar" Nullable="false" MaxLength="800" />
+        </EntityType>
+        <EntityType Name="POINT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="ADDRESS" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="POSTAL_CODE" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ID_CITY" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="COORDENATE" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="PHONE_NUMBER" Type="nvarchar" MaxLength="250" />
+          <Property Name="URL" Type="nvarchar(max)" />
+          <Property Name="SOURCE_URL" Type="nvarchar(max)" />
+          <Property Name="IS_ACTIVE" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="POINT_TOPIC">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_POINT" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_TOPIC" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="POINTS_ATTRIBUTES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_POINT" Type="uniqueidentifier" />
+          <Property Name="KEYPAIR" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="VALUE_BOOL" Type="bit" />
+          <Property Name="VALUE_STRING" Type="nvarchar(max)" />
+          <Property Name="VALUE_NUMBER" Type="numeric" Scale="5" />
+          <Property Name="VALUE_DATE" Type="datetime" />
+          <Property Name="VALUE_TYPE" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="IS_ACTIVE" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SEARCH_PROFILE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_USER" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="POINTS_RANGE_DISTANCE" Type="int" />
+          <Property Name="EVENTS_SEARCH_DAYS" Type="int" />
+          <Property Name="SEARCH_CRITERIA" Type="nvarchar" MaxLength="500" />
+          <Property Name="IS_ACTIVE" Type="bit" Nullable="false" />
+          <Property Name="CREATION_DATE" Type="datetime" Nullable="false" />
+          <Property Name="UPDATE_DATE" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SEARCH_PROFILE_TOPIC">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_SEARCH_PROFILE" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_TOPIC" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="THEME">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="DESCRIPTION" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="IMAGE" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="IS_ACTIVE" Type="bit" Nullable="false" />
+          <Property Name="CREATION_DATE" Type="datetime" Nullable="false" />
+          <Property Name="UPDATE_DATE" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TOPIC">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_THEME" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="DESCRIPTION" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="IMAGE" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="IS_ACTIVE" Type="bit" Nullable="false" />
+          <Property Name="CREATION_DATE" Type="datetime" Nullable="false" />
+          <Property Name="UPDATE_DATE" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TRANSLATIONS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_LANGUAGE" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FOREIGN_ID" Type="uniqueidentifier" />
+          <Property Name="TABLE_NAME" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="FIELD_NAME" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="VALUE" Type="nvarchar" Nullable="false" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="REALNAME" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="IS_ACTIVE" Type="bit" Nullable="false" />
+          <Property Name="UPDATE_DATE" Type="datetime" Nullable="false" />
+          <Property Name="CREATION_DATE" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_APP_ENTERPRISE">
+          <End Role="ENTERPRISE" Type="AppTourModel.Store.ENTERPRISE" Multiplicity="1" />
+          <End Role="APP" Type="AppTourModel.Store.APP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ENTERPRISE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="APP">
+              <PropertyRef Name="ID_ENTERPRISE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ATTRIBUTE_POINT">
+          <End Role="POINT" Type="AppTourModel.Store.POINT" Multiplicity="0..1" />
+          <End Role="POINTS_ATTRIBUTES" Type="AppTourModel.Store.POINTS_ATTRIBUTES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POINT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="POINTS_ATTRIBUTES">
+              <PropertyRef Name="ID_POINT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AUTHOR_ENTERPRISE">
+          <End Role="ENTERPRISE" Type="AppTourModel.Store.ENTERPRISE" Multiplicity="1" />
+          <End Role="AUTHOR" Type="AppTourModel.Store.AUTHOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ENTERPRISE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AUTHOR">
+              <PropertyRef Name="ID_ENTERPRISE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CITY_COUNTRIE">
+          <End Role="COUNTRY" Type="AppTourModel.Store.COUNTRY" Multiplicity="1" />
+          <End Role="CITY" Type="AppTourModel.Store.CITY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COUNTRY">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CITY">
+              <PropertyRef Name="ID_COUNTRY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CLASSIFICATION_EVENT">
+          <End Role="EVENT" Type="AppTourModel.Store.EVENT" Multiplicity="0..1" />
+          <End Role="CLASSIFICATION" Type="AppTourModel.Store.CLASSIFICATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EVENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CLASSIFICATION">
+              <PropertyRef Name="ID_EVENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CLASSIFICATION_POINT">
+          <End Role="POINT" Type="AppTourModel.Store.POINT" Multiplicity="0..1" />
+          <End Role="CLASSIFICATION" Type="AppTourModel.Store.CLASSIFICATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POINT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CLASSIFICATION">
+              <PropertyRef Name="ID_POINT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CLASSIFICATION_USER">
+          <End Role="USER" Type="AppTourModel.Store.USER" Multiplicity="1" />
+          <End Role="CLASSIFICATION" Type="AppTourModel.Store.CLASSIFICATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CLASSIFICATION">
+              <PropertyRef Name="ID_USER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMMENT_EVENT">
+          <End Role="EVENT" Type="AppTourModel.Store.EVENT" Multiplicity="0..1" />
+          <End Role="COMMENT" Type="AppTourModel.Store.COMMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EVENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="COMMENT">
+              <PropertyRef Name="ID_EVENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMMENT_POINTS">
+          <End Role="POINT" Type="AppTourModel.Store.POINT" Multiplicity="0..1" />
+          <End Role="COMMENT" Type="AppTourModel.Store.COMMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POINT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="COMMENT">
+              <PropertyRef Name="ID_POINT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMMENT_USER">
+          <End Role="USER" Type="AppTourModel.Store.USER" Multiplicity="1" />
+          <End Role="COMMENT" Type="AppTourModel.Store.COMMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="COMMENT">
+              <PropertyRef Name="ID_USER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EVENT_PICTURES_EVENT">
+          <End Role="EVENT" Type="AppTourModel.Store.EVENT" Multiplicity="0..1" />
+          <End Role="PICTURE" Type="AppTourModel.Store.PICTURE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EVENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PICTURE">
+              <PropertyRef Name="ID_EVENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EVENT_POINT">
+          <End Role="POINT" Type="AppTourModel.Store.POINT" Multiplicity="1" />
+          <End Role="EVENT" Type="AppTourModel.Store.EVENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POINT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EVENT">
+              <PropertyRef Name="ID_POINT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EVENT_TOPIC_EVENT">
+          <End Role="EVENT" Type="AppTourModel.Store.EVENT" Multiplicity="1" />
+          <End Role="EVENT_TOPIC" Type="AppTourModel.Store.EVENT_TOPIC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EVENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EVENT_TOPIC">
+              <PropertyRef Name="ID_EVENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EVENT_TOPIC_TOPIC">
+          <End Role="TOPIC" Type="AppTourModel.Store.TOPIC" Multiplicity="1" />
+          <End Role="EVENT_TOPIC" Type="AppTourModel.Store.EVENT_TOPIC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TOPIC">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EVENT_TOPIC">
+              <PropertyRef Name="ID_TOPIC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOURS_EVENT">
+          <End Role="EVENT" Type="AppTourModel.Store.EVENT" Multiplicity="0..1" />
+          <End Role="HOURS" Type="AppTourModel.Store.HOURS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EVENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HOURS">
+              <PropertyRef Name="ID_EVENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOURS_HOUR">
+          <End Role="HOUR" Type="AppTourModel.Store.HOUR" Multiplicity="1" />
+          <End Role="HOURS" Type="AppTourModel.Store.HOURS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOUR">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HOURS">
+              <PropertyRef Name="ID_HOUR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOURS_POINT">
+          <End Role="POINT" Type="AppTourModel.Store.POINT" Multiplicity="0..1" />
+          <End Role="HOURS" Type="AppTourModel.Store.HOURS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POINT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HOURS">
+              <PropertyRef Name="ID_POINT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PICTURE_POINT">
+          <End Role="POINT" Type="AppTourModel.Store.POINT" Multiplicity="0..1" />
+          <End Role="PICTURE" Type="AppTourModel.Store.PICTURE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POINT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PICTURE">
+              <PropertyRef Name="ID_POINT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POINT_TOPIC_POINT">
+          <End Role="POINT" Type="AppTourModel.Store.POINT" Multiplicity="1" />
+          <End Role="POINT_TOPIC" Type="AppTourModel.Store.POINT_TOPIC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POINT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="POINT_TOPIC">
+              <PropertyRef Name="ID_POINT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POINT_TOPIC_TOPIC">
+          <End Role="TOPIC" Type="AppTourModel.Store.TOPIC" Multiplicity="1" />
+          <End Role="POINT_TOPIC" Type="AppTourModel.Store.POINT_TOPIC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TOPIC">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="POINT_TOPIC">
+              <PropertyRef Name="ID_TOPIC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POINTS_CITY">
+          <End Role="CITY" Type="AppTourModel.Store.CITY" Multiplicity="1" />
+          <End Role="POINT" Type="AppTourModel.Store.POINT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CITY">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="POINT">
+              <PropertyRef Name="ID_CITY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SEARCH_PROFILE_TOPIC_SEARCH_PROFILE">
+          <End Role="SEARCH_PROFILE" Type="AppTourModel.Store.SEARCH_PROFILE" Multiplicity="1" />
+          <End Role="SEARCH_PROFILE_TOPIC" Type="AppTourModel.Store.SEARCH_PROFILE_TOPIC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEARCH_PROFILE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SEARCH_PROFILE_TOPIC">
+              <PropertyRef Name="ID_SEARCH_PROFILE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SEARCH_PROFILE_TOPIC_TOPIC">
+          <End Role="TOPIC" Type="AppTourModel.Store.TOPIC" Multiplicity="1" />
+          <End Role="SEARCH_PROFILE_TOPIC" Type="AppTourModel.Store.SEARCH_PROFILE_TOPIC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TOPIC">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SEARCH_PROFILE_TOPIC">
+              <PropertyRef Name="ID_TOPIC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SEARCH_PROFILE_USER">
+          <End Role="USER" Type="AppTourModel.Store.USER" Multiplicity="1" />
+          <End Role="SEARCH_PROFILE" Type="AppTourModel.Store.SEARCH_PROFILE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SEARCH_PROFILE">
+              <PropertyRef Name="ID_USER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TOPIC_THEME">
+          <End Role="THEME" Type="AppTourModel.Store.THEME" Multiplicity="1" />
+          <End Role="TOPIC" Type="AppTourModel.Store.TOPIC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="THEME">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TOPIC">
+              <PropertyRef Name="ID_THEME" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANSLATIONS_LANGUAGE">
+          <End Role="LANGUAGE" Type="AppTourModel.Store.LANGUAGE" Multiplicity="1" />
+          <End Role="TRANSLATIONS" Type="AppTourModel.Store.TRANSLATIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LANGUAGE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TRANSLATIONS">
+              <PropertyRef Name="ID_LANGUAGE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="Search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdSearchProfile" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Terms" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="Coordenate" Type="nvarchar(max)" Mode="In" />
+        </Function>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AppTourModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="AppTourEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="Search" ReturnType="Collection(Guid)">
+            <Parameter Name="IdSearchProfile" Mode="In" Type="Guid" />
+            <Parameter Name="Terms" Mode="In" Type="String" />
+            <Parameter Name="Coordenate" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="AGENTS" EntityType="AppTourModel.AGENTS" />
+          <EntitySet Name="APP" EntityType="AppTourModel.APP" />
+          <EntitySet Name="AUTHOR" EntityType="AppTourModel.AUTHOR" />
+          <EntitySet Name="CITY" EntityType="AppTourModel.CITY" />
+          <EntitySet Name="CLASSIFICATION" EntityType="AppTourModel.CLASSIFICATION" />
+          <EntitySet Name="COMMENT" EntityType="AppTourModel.COMMENT" />
+          <EntitySet Name="COUNTRY" EntityType="AppTourModel.COUNTRY" />
+          <EntitySet Name="ENTERPRISE" EntityType="AppTourModel.ENTERPRISE" />
+          <EntitySet Name="EVENT" EntityType="AppTourModel.EVENT" />
+          <EntitySet Name="EVENT_TOPIC" EntityType="AppTourModel.EVENT_TOPIC" />
+          <EntitySet Name="HOUR" EntityType="AppTourModel.HOUR" />
+          <EntitySet Name="HOURS" EntityType="AppTourModel.HOURS" />
+          <EntitySet Name="LANGUAGE" EntityType="AppTourModel.LANGUAGE" />
+          <EntitySet Name="PICTURE" EntityType="AppTourModel.PICTURE" />
+          <EntitySet Name="POINT" EntityType="AppTourModel.POINT" />
+          <EntitySet Name="POINT_TOPIC" EntityType="AppTourModel.POINT_TOPIC" />
+          <EntitySet Name="POINTS_ATTRIBUTES" EntityType="AppTourModel.POINTS_ATTRIBUTES" />
+          <EntitySet Name="SEARCH_PROFILE" EntityType="AppTourModel.SEARCH_PROFILE" />
+          <EntitySet Name="SEARCH_PROFILE_TOPIC" EntityType="AppTourModel.SEARCH_PROFILE_TOPIC" />
+          <EntitySet Name="THEME" EntityType="AppTourModel.THEME" />
+          <EntitySet Name="TOPIC" EntityType="AppTourModel.TOPIC" />
+          <EntitySet Name="TRANSLATIONS" EntityType="AppTourModel.TRANSLATIONS" />
+          <EntitySet Name="USER" EntityType="AppTourModel.USER" />
+          <AssociationSet Name="FK_APP_ENTERPRISE" Association="AppTourModel.FK_APP_ENTERPRISE">
+            <End Role="ENTERPRISE" EntitySet="ENTERPRISE" />
+            <End Role="APP" EntitySet="APP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AUTHOR_ENTERPRISE" Association="AppTourModel.FK_AUTHOR_ENTERPRISE">
+            <End Role="ENTERPRISE" EntitySet="ENTERPRISE" />
+            <End Role="AUTHOR" EntitySet="AUTHOR" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CITY_COUNTRIE" Association="AppTourModel.FK_CITY_COUNTRIE">
+            <End Role="COUNTRY" EntitySet="COUNTRY" />
+            <End Role="CITY" EntitySet="CITY" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POINTS_CITY" Association="AppTourModel.FK_POINTS_CITY">
+            <End Role="CITY" EntitySet="CITY" />
+            <End Role="POINT" EntitySet="POINT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CLASSIFICATION_EVENT" Association="AppTourModel.FK_CLASSIFICATION_EVENT">
+            <End Role="EVENT" EntitySet="EVENT" />
+            <End Role="CLASSIFICATION" EntitySet="CLASSIFICATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CLASSIFICATION_POINT" Association="AppTourModel.FK_CLASSIFICATION_POINT">
+            <End Role="POINT" EntitySet="POINT" />
+            <End Role="CLASSIFICATION" EntitySet="CLASSIFICATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CLASSIFICATION_USER" Association="AppTourModel.FK_CLASSIFICATION_USER">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="CLASSIFICATION" EntitySet="CLASSIFICATION" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMMENT_EVENT" Association="AppTourModel.FK_COMMENT_EVENT">
+            <End Role="EVENT" EntitySet="EVENT" />
+            <End Role="COMMENT" EntitySet="COMMENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMMENT_POINTS" Association="AppTourModel.FK_COMMENT_POINTS">
+            <End Role="POINT" EntitySet="POINT" />
+            <End Role="COMMENT" EntitySet="COMMENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_COMMENT_USER" Association="AppTourModel.FK_COMMENT_USER">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="COMMENT" EntitySet="COMMENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EVENT_PICTURES_EVENT" Association="AppTourModel.FK_EVENT_PICTURES_EVENT">
+            <End Role="EVENT" EntitySet="EVENT" />
+            <End Role="PICTURE" EntitySet="PICTURE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EVENT_POINT" Association="AppTourModel.FK_EVENT_POINT">
+            <End Role="POINT" EntitySet="POINT" />
+            <End Role="EVENT" EntitySet="EVENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EVENT_TOPIC_EVENT" Association="AppTourModel.FK_EVENT_TOPIC_EVENT">
+            <End Role="EVENT" EntitySet="EVENT" />
+            <End Role="EVENT_TOPIC" EntitySet="EVENT_TOPIC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOURS_EVENT" Association="AppTourModel.FK_HOURS_EVENT">
+            <End Role="EVENT" EntitySet="EVENT" />
+            <End Role="HOURS" EntitySet="HOURS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EVENT_TOPIC_TOPIC" Association="AppTourModel.FK_EVENT_TOPIC_TOPIC">
+            <End Role="TOPIC" EntitySet="TOPIC" />
+            <End Role="EVENT_TOPIC" EntitySet="EVENT_TOPIC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOURS_HOUR" Association="AppTourModel.FK_HOURS_HOUR">
+            <End Role="HOUR" EntitySet="HOUR" />
+            <End Role="HOURS" EntitySet="HOURS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOURS_POINT" Association="AppTourModel.FK_HOURS_POINT">
+            <End Role="POINT" EntitySet="POINT" />
+            <End Role="HOURS" EntitySet="HOURS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TRANSLATIONS_LANGUAGE" Association="AppTourModel.FK_TRANSLATIONS_LANGUAGE">
+            <End Role="LANGUAGE" EntitySet="LANGUAGE" />
+            <End Role="TRANSLATIONS" EntitySet="TRANSLATIONS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PICTURE_POINT" Association="AppTourModel.FK_PICTURE_POINT">
+            <End Role="POINT" EntitySet="POINT" />
+            <End Role="PICTURE" EntitySet="PICTURE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ATTRIBUTE_POINT" Association="AppTourModel.FK_ATTRIBUTE_POINT">
+            <End Role="POINT" EntitySet="POINT" />
+            <End Role="POINTS_ATTRIBUTES" EntitySet="POINTS_ATTRIBUTES" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POINT_TOPIC_POINT" Association="AppTourModel.FK_POINT_TOPIC_POINT">
+            <End Role="POINT" EntitySet="POINT" />
+            <End Role="POINT_TOPIC" EntitySet="POINT_TOPIC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_POINT_TOPIC_TOPIC" Association="AppTourModel.FK_POINT_TOPIC_TOPIC">
+            <End Role="TOPIC" EntitySet="TOPIC" />
+            <End Role="POINT_TOPIC" EntitySet="POINT_TOPIC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SEARCH_PROFILE_TOPIC_SEARCH_PROFILE" Association="AppTourModel.FK_SEARCH_PROFILE_TOPIC_SEARCH_PROFILE">
+            <End Role="SEARCH_PROFILE" EntitySet="SEARCH_PROFILE" />
+            <End Role="SEARCH_PROFILE_TOPIC" EntitySet="SEARCH_PROFILE_TOPIC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SEARCH_PROFILE_USER" Association="AppTourModel.FK_SEARCH_PROFILE_USER">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="SEARCH_PROFILE" EntitySet="SEARCH_PROFILE" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SEARCH_PROFILE_TOPIC_TOPIC" Association="AppTourModel.FK_SEARCH_PROFILE_TOPIC_TOPIC">
+            <End Role="TOPIC" EntitySet="TOPIC" />
+            <End Role="SEARCH_PROFILE_TOPIC" EntitySet="SEARCH_PROFILE_TOPIC" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TOPIC_THEME" Association="AppTourModel.FK_TOPIC_THEME">
+            <End Role="THEME" EntitySet="THEME" />
+            <End Role="TOPIC" EntitySet="TOPIC" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="AGENTS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FULL_CLASS_NAME" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DLL_FILE" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="MAX_REQUEST_PER_DAY" Nullable="false" />
+          <Property Type="Int32" Name="PERIODICITY" Nullable="false" />
+          <Property Type="Int32" Name="RATING" Nullable="false" />
+          <Property Type="String" Name="LAST_REFERENCE" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="LAST_EXECUTION_DATE" />
+          <Property Type="Boolean" Name="IS_ACTIVE" Nullable="false" />
+          <Property Type="DateTime" Name="CREATION_DATE" Nullable="false" />
+        </EntityType>
+        <EntityType Name="APP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="Guid" Name="ID_ENTERPRISE" Nullable="false" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DESCRIPTION" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="VERSION" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="URL" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CREATION_DATE" Nullable="false" />
+          <Property Type="DateTime" Name="UPDATE_DATE" Nullable="false" />
+          <NavigationProperty Name="ENTERPRISE" Relationship="AppTourModel.FK_APP_ENTERPRISE" FromRole="APP" ToRole="ENTERPRISE" />
+        </EntityType>
+        <EntityType Name="AUTHOR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="Guid" Name="ID_ENTERPRISE" Nullable="false" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="REALNAME" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="EMAIL" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CREATION_DATE" Nullable="false" />
+          <Property Type="DateTime" Name="UPDATE_DATE" Nullable="false" />
+          <NavigationProperty Name="ENTERPRISE" Relationship="AppTourModel.FK_AUTHOR_ENTERPRISE" FromRole="AUTHOR" ToRole="ENTERPRISE" />
+        </EntityType>
+        <EntityType Name="CITY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="Guid" Name="ID_COUNTRY" Nullable="false" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="COUNTRY" Relationship="AppTourModel.FK_CITY_COUNTRIE" FromRole="CITY" ToRole="COUNTRY" />
+          <NavigationProperty Name="POINT" Relationship="AppTourModel.FK_POINTS_CITY" FromRole="CITY" ToRole="POINT" />
+        </EntityType>
+        <EntityType Name="CLASSIFICATION">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="Guid" Name="ID_POINT" />
+          <Property Type="Guid" Name="ID_EVENT" />
+          <Property Type="Int32" Name="CLASSIFICATION1" Nullable="false" />
+          <Property Type="Guid" Name="ID_USER" Nullable="false" />
+          <Property Type="DateTime" Name="CREATION_DATE" Nullable="false" />
+          <NavigationProperty Name="EVENT" Relationship="AppTourModel.FK_CLASSIFICATION_EVENT" FromRole="CLASSIFICATION" ToRole="EVENT" />
+          <NavigationProperty Name="POINT" Relationship="AppTourModel.FK_CLASSIFICATION_POINT" FromRole="CLASSIFICATION" ToRole="POINT" />
+          <NavigationProperty Name="USER" Relationship="AppTourModel.FK_CLASSIFICATION_USER" FromRole="CLASSIFICATION" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="COMMENT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="Guid" Name="ID_USER" Nullable="false" />
+          <Property Type="Guid" Name="ID_POINT" />
+          <Property Type="Guid" Name="ID_EVENT" />
+          <Property Type="String" Name="COMMENT1" Nullable="false" MaxLength="800" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IS_ACTIVE" Nullable="false" />
+          <Property Type="Boolean" Name="IS_REPORTED" Nullable="false" />
+          <Property Type="DateTime" Name="CREATION_DATE" Nullable="false" />
+          <NavigationProperty Name="EVENT" Relationship="AppTourModel.FK_COMMENT_EVENT" FromRole="COMMENT" ToRole="EVENT" />
+          <NavigationProperty Name="POINT" Relationship="AppTourModel.FK_COMMENT_POINTS" FromRole="COMMENT" ToRole="POINT" />
+          <NavigationProperty Name="USER" Relationship="AppTourModel.FK_COMMENT_USER" FromRole="COMMENT" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="COUNTRY">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="String" Name="ISO" Nullable="false" MaxLength="2" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="COUNTRY_NAME" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ISO3" MaxLength="3" FixedLength="true" Unicode="true" />
+          <Property Type="Int16" Name="COUNTRY_CODE" />
+          <NavigationProperty Name="CITY" Relationship="AppTourModel.FK_CITY_COUNTRIE" FromRole="COUNTRY" ToRole="CITY" />
+        </EntityType>
+        <EntityType Name="ENTERPRISE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DESCRIPTION" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CREATION_DATE" Nullable="false" />
+          <Property Type="DateTime" Name="UPDATE_DATE" Nullable="false" />
+          <NavigationProperty Name="APP" Relationship="AppTourModel.FK_APP_ENTERPRISE" FromRole="ENTERPRISE" ToRole="APP" />
+          <NavigationProperty Name="AUTHOR" Relationship="AppTourModel.FK_AUTHOR_ENTERPRISE" FromRole="ENTERPRISE" ToRole="AUTHOR" />
+        </EntityType>
+        <EntityType Name="EVENT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="ID_POINT" Nullable="false" />
+          <Property Type="String" Name="DESCRIPTION" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="URL" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SOURCE_URL" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CLASSIFICATION" Relationship="AppTourModel.FK_CLASSIFICATION_EVENT" FromRole="EVENT" ToRole="CLASSIFICATION" />
+          <NavigationProperty Name="COMMENT" Relationship="AppTourModel.FK_COMMENT_EVENT" FromRole="EVENT" ToRole="COMMENT" />
+          <NavigationProperty Name="PICTURE" Relationship="AppTourModel.FK_EVENT_PICTURES_EVENT" FromRole="EVENT" ToRole="PICTURE" />
+          <NavigationProperty Name="POINT" Relationship="AppTourModel.FK_EVENT_POINT" FromRole="EVENT" ToRole="POINT" />
+          <NavigationProperty Name="EVENT_TOPIC" Relationship="AppTourModel.FK_EVENT_TOPIC_EVENT" FromRole="EVENT" ToRole="EVENT_TOPIC" />
+          <NavigationProperty Name="HOURS" Relationship="AppTourModel.FK_HOURS_EVENT" FromRole="EVENT" ToRole="HOURS" />
+        </EntityType>
+        <EntityType Name="EVENT_TOPIC">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="Guid" Name="ID_EVENT" Nullable="false" />
+          <Property Type="Guid" Name="ID_TOPIC" Nullable="false" />
+          <NavigationProperty Name="EVENT" Relationship="AppTourModel.FK_EVENT_TOPIC_EVENT" FromRole="EVENT_TOPIC" ToRole="EVENT" />
+          <NavigationProperty Name="TOPIC" Relationship="AppTourModel.FK_EVENT_TOPIC_TOPIC" FromRole="EVENT_TOPIC" ToRole="TOPIC" />
+        </EntityType>
+        <EntityType Name="HOUR">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="String" Name="HOUR_DESCRIPTION" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="BEGIN_DATE" Nullable="false" />
+          <Property Type="DateTime" Name="END_DATE" Nullable="false" />
+          <Property Type="Time" Name="BEGIN_TIME" Nullable="false" />
+          <Property Type="Time" Name="END_TIME" Nullable="false" />
+          <Property Type="Boolean" Name="MONDAY" />
+          <Property Type="Boolean" Name="TUESDAY" />
+          <Property Type="Boolean" Name="WEDNESDAY" />
+          <Property Type="Boolean" Name="THURSDAY" />
+          <Property Type="Boolean" Name="FRIDAY" />
+          <Property Type="Boolean" Name="SATURDAY" />
+          <Property Type="Boolean" Name="SUNDAY" />
+          <Property Type="Boolean" Name="HOLIDAY" />
+          <NavigationProperty Name="HOURS" Relationship="AppTourModel.FK_HOURS_HOUR" FromRole="HOUR" ToRole="HOURS" />
+        </EntityType>
+        <EntityType Name="HOURS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="Guid" Name="ID_EVENT" />
+          <Property Type="Guid" Name="ID_POINT" />
+          <Property Type="Guid" Name="ID_HOUR" Nullable="false" />
+          <NavigationProperty Name="EVENT" Relationship="AppTourModel.FK_HOURS_EVENT" FromRole="HOURS" ToRole="EVENT" />
+          <NavigationProperty Name="HOUR" Relationship="AppTourModel.FK_HOURS_HOUR" FromRole="HOURS" ToRole="HOUR" />
+          <NavigationProperty Name="POINT" Relationship="AppTourModel.FK_HOURS_POINT" FromRole="HOURS" ToRole="POINT" />
+        </EntityType>
+        <EntityType Name="LANGUAGE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ISO2" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Type="Boolean" Name="IS_ACTIVE" Nullable="false" />
+          <NavigationProperty Name="TRANSLATIONS" Relationship="AppTourModel.FK_TRANSLATIONS_LANGUAGE" FromRole="LANGUAGE" ToRole="TRANSLATIONS" />
+        </EntityType>
+        <EntityType Name="PICTURE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="Guid" Name="ID_POINT" />
+          <Property Type="Guid" Name="ID_EVENT" />
+          <Property Type="String" Name="PIC_URL" Nullable="false" MaxLength="800" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="EVENT" Relationship="AppTourModel.FK_EVENT_PICTURES_EVENT" FromRole="PICTURE" ToRole="EVENT" />
+          <NavigationProperty Name="POINT" Relationship="AppTourModel.FK_PICTURE_POINT" FromRole="PICTURE" ToRole="POINT" />
+        </EntityType>
+        <EntityType Name="POINT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ADDRESS" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="POSTAL_CODE" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Guid" Name="ID_CITY" Nullable="false" />
+          <Property Type="String" Name="COORDENATE" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PHONE_NUMBER" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="URL" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SOURCE_URL" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IS_ACTIVE" Nullable="false" />
+          <NavigationProperty Name="CITY" Relationship="AppTourModel.FK_POINTS_CITY" FromRole="POINT" ToRole="CITY" />
+          <NavigationProperty Name="CLASSIFICATION" Relationship="AppTourModel.FK_CLASSIFICATION_POINT" FromRole="POINT" ToRole="CLASSIFICATION" />
+          <NavigationProperty Name="COMMENT" Relationship="AppTourModel.FK_COMMENT_POINTS" FromRole="POINT" ToRole="COMMENT" />
+          <NavigationProperty Name="EVENT" Relationship="AppTourModel.FK_EVENT_POINT" FromRole="POINT" ToRole="EVENT" />
+          <NavigationProperty Name="HOURS" Relationship="AppTourModel.FK_HOURS_POINT" FromRole="POINT" ToRole="HOURS" />
+          <NavigationProperty Name="PICTURE" Relationship="AppTourModel.FK_PICTURE_POINT" FromRole="POINT" ToRole="PICTURE" />
+          <NavigationProperty Name="POINTS_ATTRIBUTES" Relationship="AppTourModel.FK_ATTRIBUTE_POINT" FromRole="POINT" ToRole="POINTS_ATTRIBUTES" />
+          <NavigationProperty Name="POINT_TOPIC" Relationship="AppTourModel.FK_POINT_TOPIC_POINT" FromRole="POINT" ToRole="POINT_TOPIC" />
+        </EntityType>
+        <EntityType Name="POINT_TOPIC">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="Guid" Name="ID_POINT" Nullable="false" />
+          <Property Type="Guid" Name="ID_TOPIC" Nullable="false" />
+          <NavigationProperty Name="POINT" Relationship="AppTourModel.FK_POINT_TOPIC_POINT" FromRole="POINT_TOPIC" ToRole="POINT" />
+          <NavigationProperty Name="TOPIC" Relationship="AppTourModel.FK_POINT_TOPIC_TOPIC" FromRole="POINT_TOPIC" ToRole="TOPIC" />
+        </EntityType>
+        <EntityType Name="POINTS_ATTRIBUTES">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="Guid" Name="ID_POINT" />
+          <Property Type="String" Name="KEYPAIR" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="VALUE_BOOL" />
+          <Property Type="String" Name="VALUE_STRING" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="VALUE_NUMBER" Precision="18" Scale="5" />
+          <Property Type="DateTime" Name="VALUE_DATE" />
+          <Property Type="String" Name="VALUE_TYPE" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IS_ACTIVE" Nullable="false" />
+          <NavigationProperty Name="POINT" Relationship="AppTourModel.FK_ATTRIBUTE_POINT" FromRole="POINTS_ATTRIBUTES" ToRole="POINT" />
+        </EntityType>
+        <EntityType Name="SEARCH_PROFILE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="Guid" Name="ID_USER" Nullable="false" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="POINTS_RANGE_DISTANCE" />
+          <Property Type="Int32" Name="EVENTS_SEARCH_DAYS" />
+          <Property Type="String" Name="SEARCH_CRITERIA" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IS_ACTIVE" Nullable="false" />
+          <Property Type="DateTime" Name="CREATION_DATE" Nullable="false" />
+          <Property Type="DateTime" Name="UPDATE_DATE" Nullable="false" />
+          <NavigationProperty Name="SEARCH_PROFILE_TOPIC" Relationship="AppTourModel.FK_SEARCH_PROFILE_TOPIC_SEARCH_PROFILE" FromRole="SEARCH_PROFILE" ToRole="SEARCH_PROFILE_TOPIC" />
+          <NavigationProperty Name="USER" Relationship="AppTourModel.FK_SEARCH_PROFILE_USER" FromRole="SEARCH_PROFILE" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="SEARCH_PROFILE_TOPIC">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="Guid" Name="ID_SEARCH_PROFILE" Nullable="false" />
+          <Property Type="Guid" Name="ID_TOPIC" Nullable="false" />
+          <NavigationProperty Name="SEARCH_PROFILE" Relationship="AppTourModel.FK_SEARCH_PROFILE_TOPIC_SEARCH_PROFILE" FromRole="SEARCH_PROFILE_TOPIC" ToRole="SEARCH_PROFILE" />
+          <NavigationProperty Name="TOPIC" Relationship="AppTourModel.FK_SEARCH_PROFILE_TOPIC_TOPIC" FromRole="SEARCH_PROFILE_TOPIC" ToRole="TOPIC" />
+        </EntityType>
+        <EntityType Name="THEME">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DESCRIPTION" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IMAGE" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IS_ACTIVE" Nullable="false" />
+          <Property Type="DateTime" Name="CREATION_DATE" Nullable="false" />
+          <Property Type="DateTime" Name="UPDATE_DATE" Nullable="false" />
+          <NavigationProperty Name="TOPIC" Relationship="AppTourModel.FK_TOPIC_THEME" FromRole="THEME" ToRole="TOPIC" />
+        </EntityType>
+        <EntityType Name="TOPIC">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="Guid" Name="ID_THEME" Nullable="false" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DESCRIPTION" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IMAGE" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IS_ACTIVE" Nullable="false" />
+          <Property Type="DateTime" Name="CREATION_DATE" Nullable="false" />
+          <Property Type="DateTime" Name="UPDATE_DATE" Nullable="false" />
+          <NavigationProperty Name="EVENT_TOPIC" Relationship="AppTourModel.FK_EVENT_TOPIC_TOPIC" FromRole="TOPIC" ToRole="EVENT_TOPIC" />
+          <NavigationProperty Name="POINT_TOPIC" Relationship="AppTourModel.FK_POINT_TOPIC_TOPIC" FromRole="TOPIC" ToRole="POINT_TOPIC" />
+          <NavigationProperty Name="SEARCH_PROFILE_TOPIC" Relationship="AppTourModel.FK_SEARCH_PROFILE_TOPIC_TOPIC" FromRole="TOPIC" ToRole="SEARCH_PROFILE_TOPIC" />
+          <NavigationProperty Name="THEME" Relationship="AppTourModel.FK_TOPIC_THEME" FromRole="TOPIC" ToRole="THEME" />
+        </EntityType>
+        <EntityType Name="TRANSLATIONS">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="Guid" Name="ID_LANGUAGE" Nullable="false" />
+          <Property Type="Guid" Name="FOREIGN_ID" />
+          <Property Type="String" Name="TABLE_NAME" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FIELD_NAME" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="VALUE" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LANGUAGE" Relationship="AppTourModel.FK_TRANSLATIONS_LANGUAGE" FromRole="TRANSLATIONS" ToRole="LANGUAGE" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="String" Name="REALNAME" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IS_ACTIVE" Nullable="false" />
+          <Property Type="DateTime" Name="UPDATE_DATE" Nullable="false" />
+          <Property Type="DateTime" Name="CREATION_DATE" Nullable="false" />
+          <NavigationProperty Name="CLASSIFICATION" Relationship="AppTourModel.FK_CLASSIFICATION_USER" FromRole="USER" ToRole="CLASSIFICATION" />
+          <NavigationProperty Name="COMMENT" Relationship="AppTourModel.FK_COMMENT_USER" FromRole="USER" ToRole="COMMENT" />
+          <NavigationProperty Name="SEARCH_PROFILE" Relationship="AppTourModel.FK_SEARCH_PROFILE_USER" FromRole="USER" ToRole="SEARCH_PROFILE" />
+        </EntityType>
+        <Association Name="FK_APP_ENTERPRISE">
+          <End Type="AppTourModel.ENTERPRISE" Role="ENTERPRISE" Multiplicity="1" />
+          <End Type="AppTourModel.APP" Role="APP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ENTERPRISE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="APP">
+              <PropertyRef Name="ID_ENTERPRISE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AUTHOR_ENTERPRISE">
+          <End Type="AppTourModel.ENTERPRISE" Role="ENTERPRISE" Multiplicity="1" />
+          <End Type="AppTourModel.AUTHOR" Role="AUTHOR" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ENTERPRISE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AUTHOR">
+              <PropertyRef Name="ID_ENTERPRISE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CITY_COUNTRIE">
+          <End Type="AppTourModel.COUNTRY" Role="COUNTRY" Multiplicity="1" />
+          <End Type="AppTourModel.CITY" Role="CITY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COUNTRY">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CITY">
+              <PropertyRef Name="ID_COUNTRY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POINTS_CITY">
+          <End Type="AppTourModel.CITY" Role="CITY" Multiplicity="1" />
+          <End Type="AppTourModel.POINT" Role="POINT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CITY">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="POINT">
+              <PropertyRef Name="ID_CITY" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CLASSIFICATION_EVENT">
+          <End Type="AppTourModel.EVENT" Role="EVENT" Multiplicity="0..1" />
+          <End Type="AppTourModel.CLASSIFICATION" Role="CLASSIFICATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EVENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CLASSIFICATION">
+              <PropertyRef Name="ID_EVENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CLASSIFICATION_POINT">
+          <End Type="AppTourModel.POINT" Role="POINT" Multiplicity="0..1" />
+          <End Type="AppTourModel.CLASSIFICATION" Role="CLASSIFICATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POINT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CLASSIFICATION">
+              <PropertyRef Name="ID_POINT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CLASSIFICATION_USER">
+          <End Type="AppTourModel.USER" Role="USER" Multiplicity="1" />
+          <End Type="AppTourModel.CLASSIFICATION" Role="CLASSIFICATION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="CLASSIFICATION">
+              <PropertyRef Name="ID_USER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMMENT_EVENT">
+          <End Type="AppTourModel.EVENT" Role="EVENT" Multiplicity="0..1" />
+          <End Type="AppTourModel.COMMENT" Role="COMMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EVENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="COMMENT">
+              <PropertyRef Name="ID_EVENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMMENT_POINTS">
+          <End Type="AppTourModel.POINT" Role="POINT" Multiplicity="0..1" />
+          <End Type="AppTourModel.COMMENT" Role="COMMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POINT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="COMMENT">
+              <PropertyRef Name="ID_POINT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_COMMENT_USER">
+          <End Type="AppTourModel.USER" Role="USER" Multiplicity="1" />
+          <End Type="AppTourModel.COMMENT" Role="COMMENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="COMMENT">
+              <PropertyRef Name="ID_USER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EVENT_PICTURES_EVENT">
+          <End Type="AppTourModel.EVENT" Role="EVENT" Multiplicity="0..1" />
+          <End Type="AppTourModel.PICTURE" Role="PICTURE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EVENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PICTURE">
+              <PropertyRef Name="ID_EVENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EVENT_POINT">
+          <End Type="AppTourModel.POINT" Role="POINT" Multiplicity="1" />
+          <End Type="AppTourModel.EVENT" Role="EVENT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POINT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EVENT">
+              <PropertyRef Name="ID_POINT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EVENT_TOPIC_EVENT">
+          <End Type="AppTourModel.EVENT" Role="EVENT" Multiplicity="1" />
+          <End Type="AppTourModel.EVENT_TOPIC" Role="EVENT_TOPIC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EVENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EVENT_TOPIC">
+              <PropertyRef Name="ID_EVENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOURS_EVENT">
+          <End Type="AppTourModel.EVENT" Role="EVENT" Multiplicity="0..1" />
+          <End Type="AppTourModel.HOURS" Role="HOURS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EVENT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HOURS">
+              <PropertyRef Name="ID_EVENT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EVENT_TOPIC_TOPIC">
+          <End Type="AppTourModel.TOPIC" Role="TOPIC" Multiplicity="1" />
+          <End Type="AppTourModel.EVENT_TOPIC" Role="EVENT_TOPIC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TOPIC">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="EVENT_TOPIC">
+              <PropertyRef Name="ID_TOPIC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOURS_HOUR">
+          <End Type="AppTourModel.HOUR" Role="HOUR" Multiplicity="1" />
+          <End Type="AppTourModel.HOURS" Role="HOURS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOUR">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HOURS">
+              <PropertyRef Name="ID_HOUR" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOURS_POINT">
+          <End Type="AppTourModel.POINT" Role="POINT" Multiplicity="0..1" />
+          <End Type="AppTourModel.HOURS" Role="HOURS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POINT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="HOURS">
+              <PropertyRef Name="ID_POINT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TRANSLATIONS_LANGUAGE">
+          <End Type="AppTourModel.LANGUAGE" Role="LANGUAGE" Multiplicity="1" />
+          <End Type="AppTourModel.TRANSLATIONS" Role="TRANSLATIONS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LANGUAGE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TRANSLATIONS">
+              <PropertyRef Name="ID_LANGUAGE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PICTURE_POINT">
+          <End Type="AppTourModel.POINT" Role="POINT" Multiplicity="0..1" />
+          <End Type="AppTourModel.PICTURE" Role="PICTURE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POINT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PICTURE">
+              <PropertyRef Name="ID_POINT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ATTRIBUTE_POINT">
+          <End Type="AppTourModel.POINT" Role="POINT" Multiplicity="0..1" />
+          <End Type="AppTourModel.POINTS_ATTRIBUTES" Role="POINTS_ATTRIBUTES" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POINT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="POINTS_ATTRIBUTES">
+              <PropertyRef Name="ID_POINT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POINT_TOPIC_POINT">
+          <End Type="AppTourModel.POINT" Role="POINT" Multiplicity="1" />
+          <End Type="AppTourModel.POINT_TOPIC" Role="POINT_TOPIC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="POINT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="POINT_TOPIC">
+              <PropertyRef Name="ID_POINT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_POINT_TOPIC_TOPIC">
+          <End Type="AppTourModel.TOPIC" Role="TOPIC" Multiplicity="1" />
+          <End Type="AppTourModel.POINT_TOPIC" Role="POINT_TOPIC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TOPIC">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="POINT_TOPIC">
+              <PropertyRef Name="ID_TOPIC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SEARCH_PROFILE_TOPIC_SEARCH_PROFILE">
+          <End Type="AppTourModel.SEARCH_PROFILE" Role="SEARCH_PROFILE" Multiplicity="1" />
+          <End Type="AppTourModel.SEARCH_PROFILE_TOPIC" Role="SEARCH_PROFILE_TOPIC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SEARCH_PROFILE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SEARCH_PROFILE_TOPIC">
+              <PropertyRef Name="ID_SEARCH_PROFILE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SEARCH_PROFILE_USER">
+          <End Type="AppTourModel.USER" Role="USER" Multiplicity="1" />
+          <End Type="AppTourModel.SEARCH_PROFILE" Role="SEARCH_PROFILE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SEARCH_PROFILE">
+              <PropertyRef Name="ID_USER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SEARCH_PROFILE_TOPIC_TOPIC">
+          <End Type="AppTourModel.TOPIC" Role="TOPIC" Multiplicity="1" />
+          <End Type="AppTourModel.SEARCH_PROFILE_TOPIC" Role="SEARCH_PROFILE_TOPIC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TOPIC">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SEARCH_PROFILE_TOPIC">
+              <PropertyRef Name="ID_TOPIC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TOPIC_THEME">
+          <End Type="AppTourModel.THEME" Role="THEME" Multiplicity="1" />
+          <End Type="AppTourModel.TOPIC" Role="TOPIC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="THEME">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TOPIC">
+              <PropertyRef Name="ID_THEME" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AppTourModelStoreContainer" CdmEntityContainer="AppTourEntities">
+          <FunctionImportMapping FunctionImportName="Search" FunctionName="AppTourModel.Store.Search" />
+          <EntitySetMapping Name="AGENTS">
+            <EntityTypeMapping TypeName="AppTourModel.AGENTS">
+              <MappingFragment StoreEntitySet="AGENTS">
+                <ScalarProperty Name="CREATION_DATE" ColumnName="CREATION_DATE" />
+                <ScalarProperty Name="IS_ACTIVE" ColumnName="IS_ACTIVE" />
+                <ScalarProperty Name="LAST_EXECUTION_DATE" ColumnName="LAST_EXECUTION_DATE" />
+                <ScalarProperty Name="LAST_REFERENCE" ColumnName="LAST_REFERENCE" />
+                <ScalarProperty Name="RATING" ColumnName="RATING" />
+                <ScalarProperty Name="PERIODICITY" ColumnName="PERIODICITY" />
+                <ScalarProperty Name="MAX_REQUEST_PER_DAY" ColumnName="MAX_REQUEST_PER_DAY" />
+                <ScalarProperty Name="DLL_FILE" ColumnName="DLL_FILE" />
+                <ScalarProperty Name="FULL_CLASS_NAME" ColumnName="FULL_CLASS_NAME" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="APP">
+            <EntityTypeMapping TypeName="AppTourModel.APP">
+              <MappingFragment StoreEntitySet="APP">
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="CREATION_DATE" ColumnName="CREATION_DATE" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="VERSION" ColumnName="VERSION" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID_ENTERPRISE" ColumnName="ID_ENTERPRISE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AUTHOR">
+            <EntityTypeMapping TypeName="AppTourModel.AUTHOR">
+              <MappingFragment StoreEntitySet="AUTHOR">
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="CREATION_DATE" ColumnName="CREATION_DATE" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="REALNAME" ColumnName="REALNAME" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID_ENTERPRISE" ColumnName="ID_ENTERPRISE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CITY">
+            <EntityTypeMapping TypeName="AppTourModel.CITY">
+              <MappingFragment StoreEntitySet="CITY">
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID_COUNTRY" ColumnName="ID_COUNTRY" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CLASSIFICATION">
+            <EntityTypeMapping TypeName="AppTourModel.CLASSIFICATION">
+              <MappingFragment StoreEntitySet="CLASSIFICATION">
+                <ScalarProperty Name="CREATION_DATE" ColumnName="CREATION_DATE" />
+                <ScalarProperty Name="ID_USER" ColumnName="ID_USER" />
+                <ScalarProperty Name="CLASSIFICATION1" ColumnName="CLASSIFICATION" />
+                <ScalarProperty Name="ID_EVENT" ColumnName="ID_EVENT" />
+                <ScalarProperty Name="ID_POINT" ColumnName="ID_POINT" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COMMENT">
+            <EntityTypeMapping TypeName="AppTourModel.COMMENT">
+              <MappingFragment StoreEntitySet="COMMENT">
+                <ScalarProperty Name="CREATION_DATE" ColumnName="CREATION_DATE" />
+                <ScalarProperty Name="IS_REPORTED" ColumnName="IS_REPORTED" />
+                <ScalarProperty Name="IS_ACTIVE" ColumnName="IS_ACTIVE" />
+                <ScalarProperty Name="COMMENT1" ColumnName="COMMENT" />
+                <ScalarProperty Name="ID_EVENT" ColumnName="ID_EVENT" />
+                <ScalarProperty Name="ID_POINT" ColumnName="ID_POINT" />
+                <ScalarProperty Name="ID_USER" ColumnName="ID_USER" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="COUNTRY">
+            <EntityTypeMapping TypeName="AppTourModel.COUNTRY">
+              <MappingFragment StoreEntitySet="COUNTRY">
+                <ScalarProperty Name="COUNTRY_CODE" ColumnName="COUNTRY_CODE" />
+                <ScalarProperty Name="ISO3" ColumnName="ISO3" />
+                <ScalarProperty Name="COUNTRY_NAME" ColumnName="COUNTRY_NAME" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ISO" ColumnName="ISO" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ENTERPRISE">
+            <EntityTypeMapping TypeName="AppTourModel.ENTERPRISE">
+              <MappingFragment StoreEntitySet="ENTERPRISE">
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="CREATION_DATE" ColumnName="CREATION_DATE" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EVENT">
+            <EntityTypeMapping TypeName="AppTourModel.EVENT">
+              <MappingFragment StoreEntitySet="EVENT">
+                <ScalarProperty Name="SOURCE_URL" ColumnName="SOURCE_URL" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="ID_POINT" ColumnName="ID_POINT" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EVENT_TOPIC">
+            <EntityTypeMapping TypeName="AppTourModel.EVENT_TOPIC">
+              <MappingFragment StoreEntitySet="EVENT_TOPIC">
+                <ScalarProperty Name="ID_TOPIC" ColumnName="ID_TOPIC" />
+                <ScalarProperty Name="ID_EVENT" ColumnName="ID_EVENT" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HOUR">
+            <EntityTypeMapping TypeName="AppTourModel.HOUR">
+              <MappingFragment StoreEntitySet="HOUR">
+                <ScalarProperty Name="HOLIDAY" ColumnName="HOLIDAY" />
+                <ScalarProperty Name="SUNDAY" ColumnName="SUNDAY" />
+                <ScalarProperty Name="SATURDAY" ColumnName="SATURDAY" />
+                <ScalarProperty Name="FRIDAY" ColumnName="FRIDAY" />
+                <ScalarProperty Name="THURSDAY" ColumnName="THURSDAY" />
+                <ScalarProperty Name="WEDNESDAY" ColumnName="WEDNESDAY" />
+                <ScalarProperty Name="TUESDAY" ColumnName="TUESDAY" />
+                <ScalarProperty Name="MONDAY" ColumnName="MONDAY" />
+                <ScalarProperty Name="END_TIME" ColumnName="END_TIME" />
+                <ScalarProperty Name="BEGIN_TIME" ColumnName="BEGIN_TIME" />
+                <ScalarProperty Name="END_DATE" ColumnName="END_DATE" />
+                <ScalarProperty Name="BEGIN_DATE" ColumnName="BEGIN_DATE" />
+                <ScalarProperty Name="HOUR_DESCRIPTION" ColumnName="HOUR_DESCRIPTION" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HOURS">
+            <EntityTypeMapping TypeName="AppTourModel.HOURS">
+              <MappingFragment StoreEntitySet="HOURS">
+                <ScalarProperty Name="ID_HOUR" ColumnName="ID_HOUR" />
+                <ScalarProperty Name="ID_POINT" ColumnName="ID_POINT" />
+                <ScalarProperty Name="ID_EVENT" ColumnName="ID_EVENT" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LANGUAGE">
+            <EntityTypeMapping TypeName="AppTourModel.LANGUAGE">
+              <MappingFragment StoreEntitySet="LANGUAGE">
+                <ScalarProperty Name="IS_ACTIVE" ColumnName="IS_ACTIVE" />
+                <ScalarProperty Name="ISO2" ColumnName="ISO2" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PICTURE">
+            <EntityTypeMapping TypeName="AppTourModel.PICTURE">
+              <MappingFragment StoreEntitySet="PICTURE">
+                <ScalarProperty Name="PIC_URL" ColumnName="PIC_URL" />
+                <ScalarProperty Name="ID_EVENT" ColumnName="ID_EVENT" />
+                <ScalarProperty Name="ID_POINT" ColumnName="ID_POINT" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POINT">
+            <EntityTypeMapping TypeName="AppTourModel.POINT">
+              <MappingFragment StoreEntitySet="POINT">
+                <ScalarProperty Name="IS_ACTIVE" ColumnName="IS_ACTIVE" />
+                <ScalarProperty Name="SOURCE_URL" ColumnName="SOURCE_URL" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="PHONE_NUMBER" ColumnName="PHONE_NUMBER" />
+                <ScalarProperty Name="COORDENATE" ColumnName="COORDENATE" />
+                <ScalarProperty Name="ID_CITY" ColumnName="ID_CITY" />
+                <ScalarProperty Name="POSTAL_CODE" ColumnName="POSTAL_CODE" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POINT_TOPIC">
+            <EntityTypeMapping TypeName="AppTourModel.POINT_TOPIC">
+              <MappingFragment StoreEntitySet="POINT_TOPIC">
+                <ScalarProperty Name="ID_TOPIC" ColumnName="ID_TOPIC" />
+                <ScalarProperty Name="ID_POINT" ColumnName="ID_POINT" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="POINTS_ATTRIBUTES">
+            <EntityTypeMapping TypeName="AppTourModel.POINTS_ATTRIBUTES">
+              <MappingFragment StoreEntitySet="POINTS_ATTRIBUTES">
+                <ScalarProperty Name="IS_ACTIVE" ColumnName="IS_ACTIVE" />
+                <ScalarProperty Name="VALUE_TYPE" ColumnName="VALUE_TYPE" />
+                <ScalarProperty Name="VALUE_DATE" ColumnName="VALUE_DATE" />
+                <ScalarProperty Name="VALUE_NUMBER" ColumnName="VALUE_NUMBER" />
+                <ScalarProperty Name="VALUE_STRING" ColumnName="VALUE_STRING" />
+                <ScalarProperty Name="VALUE_BOOL" ColumnName="VALUE_BOOL" />
+                <ScalarProperty Name="KEYPAIR" ColumnName="KEYPAIR" />
+                <ScalarProperty Name="ID_POINT" ColumnName="ID_POINT" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SEARCH_PROFILE">
+            <EntityTypeMapping TypeName="AppTourModel.SEARCH_PROFILE">
+              <MappingFragment StoreEntitySet="SEARCH_PROFILE">
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="CREATION_DATE" ColumnName="CREATION_DATE" />
+                <ScalarProperty Name="IS_ACTIVE" ColumnName="IS_ACTIVE" />
+                <ScalarProperty Name="SEARCH_CRITERIA" ColumnName="SEARCH_CRITERIA" />
+                <ScalarProperty Name="EVENTS_SEARCH_DAYS" ColumnName="EVENTS_SEARCH_DAYS" />
+                <ScalarProperty Name="POINTS_RANGE_DISTANCE" ColumnName="POINTS_RANGE_DISTANCE" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID_USER" ColumnName="ID_USER" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SEARCH_PROFILE_TOPIC">
+            <EntityTypeMapping TypeName="AppTourModel.SEARCH_PROFILE_TOPIC">
+              <MappingFragment StoreEntitySet="SEARCH_PROFILE_TOPIC">
+                <ScalarProperty Name="ID_TOPIC" ColumnName="ID_TOPIC" />
+                <ScalarProperty Name="ID_SEARCH_PROFILE" ColumnName="ID_SEARCH_PROFILE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="THEME">
+            <EntityTypeMapping TypeName="AppTourModel.THEME">
+              <MappingFragment StoreEntitySet="THEME">
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="CREATION_DATE" ColumnName="CREATION_DATE" />
+                <ScalarProperty Name="IS_ACTIVE" ColumnName="IS_ACTIVE" />
+                <ScalarProperty Name="IMAGE" ColumnName="IMAGE" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TOPIC">
+            <EntityTypeMapping TypeName="AppTourModel.TOPIC">
+              <MappingFragment StoreEntitySet="TOPIC">
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="CREATION_DATE" ColumnName="CREATION_DATE" />
+                <ScalarProperty Name="IS_ACTIVE" ColumnName="IS_ACTIVE" />
+                <ScalarProperty Name="IMAGE" ColumnName="IMAGE" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ID_THEME" ColumnName="ID_THEME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TRANSLATIONS">
+            <EntityTypeMapping TypeName="AppTourModel.TRANSLATIONS">
+              <MappingFragment StoreEntitySet="TRANSLATIONS">
+                <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+                <ScalarProperty Name="FIELD_NAME" ColumnName="FIELD_NAME" />
+                <ScalarProperty Name="TABLE_NAME" ColumnName="TABLE_NAME" />
+                <ScalarProperty Name="FOREIGN_ID" ColumnName="FOREIGN_ID" />
+                <ScalarProperty Name="ID_LANGUAGE" ColumnName="ID_LANGUAGE" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USER">
+            <EntityTypeMapping TypeName="AppTourModel.USER">
+              <MappingFragment StoreEntitySet="USER">
+                <ScalarProperty Name="CREATION_DATE" ColumnName="CREATION_DATE" />
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="IS_ACTIVE" ColumnName="IS_ACTIVE" />
+                <ScalarProperty Name="REALNAME" ColumnName="REALNAME" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="AppTourEntities" ZoomLevel="72">
+        <EntityTypeShape EntityType="AppTourModel.AGENTS" Width="1.5" PointX="9.75" PointY="0.75" Height="3.1340950520833246" />
+        <EntityTypeShape EntityType="AppTourModel.APP" Width="1.5" PointX="17" PointY="1.125" Height="2.749492187499996" />
+        <EntityTypeShape EntityType="AppTourModel.AUTHOR" Width="1.5" PointX="17" PointY="4.625" Height="2.5571907552083246" />
+        <EntityTypeShape EntityType="AppTourModel.CITY" Width="1.5" PointX="3" PointY="11.875" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="AppTourModel.CLASSIFICATION" Width="1.5" PointX="9.75" PointY="13.875" Height="2.7494921875000102" />
+        <EntityTypeShape EntityType="AppTourModel.COMMENT" Width="1.5" PointX="12.75" PointY="13.75" Height="3.1340950520833246" />
+        <EntityTypeShape EntityType="AppTourModel.COUNTRY" Width="1.5" PointX="0.75" PointY="11.625" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="AppTourModel.ENTERPRISE" Width="1.5" PointX="14.75" PointY="3" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="AppTourModel.EVENT" Width="1.5" PointX="7.5" PointY="16.75" Height="3.3263964843750102" />
+        <EntityTypeShape EntityType="AppTourModel.EVENT_TOPIC" Width="1.5" PointX="9.75" PointY="18.375" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="AppTourModel.HOUR" Width="1.5" PointX="7.5" PointY="3.375" Height="3.903300781249996" />
+        <EntityTypeShape EntityType="AppTourModel.HOURS" Width="1.5" PointX="9.75" PointY="10.125" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="AppTourModel.LANGUAGE" Width="1.5" PointX="0.75" PointY="1.125" Height="1.9802864583333246" />
+        <EntityTypeShape EntityType="AppTourModel.PICTURE" Width="1.5" PointX="12.75" PointY="18.25" Height="2.1725878906250102" />
+        <EntityTypeShape EntityType="AppTourModel.POINT" Width="1.5" PointX="5.25" PointY="10.625" Height="4.48020507812501" />
+        <EntityTypeShape EntityType="AppTourModel.POINT_TOPIC" Width="1.5" PointX="7.5" PointY="11.875" Height="1.9802864583333388" />
+        <EntityTypeShape EntityType="AppTourModel.POINTS_ATTRIBUTES" Width="1.5" PointX="7.5" PointY="23.5" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="AppTourModel.SEARCH_PROFILE" Width="1.5" PointX="9.75" PointY="5.75" Height="3.1340950520833388" />
+        <EntityTypeShape EntityType="AppTourModel.SEARCH_PROFILE_TOPIC" Width="1.5" PointX="12" PointY="6.625" Height="1.9802864583333379" />
+        <EntityTypeShape EntityType="AppTourModel.THEME" Width="1.5" PointX="3" PointY="6.5" Height="2.5571907552083246" />
+        <EntityTypeShape EntityType="AppTourModel.TOPIC" Width="1.5" PointX="5.25" PointY="6.125" Height="3.3263964843750102" />
+        <EntityTypeShape EntityType="AppTourModel.TRANSLATIONS" Width="1.5" PointX="3" PointY="1" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="AppTourModel.USER" Width="1.5" PointX="7.5" PointY="8" Height="2.5571907552083246" />
+        <AssociationConnector Association="AppTourModel.FK_APP_ENTERPRISE" >
+          <ConnectorPoint PointX="16.25" PointY="3.437246093749998" />
+          <ConnectorPoint PointX="17" PointY="3.437246093749998" />
+        </AssociationConnector>
+        <AssociationConnector Association="AppTourModel.FK_AUTHOR_ENTERPRISE" >
+          <ConnectorPoint PointX="16.25" PointY="4.9949446614583337" />
+          <ConnectorPoint PointX="17" PointY="4.9949446614583337" />
+        </AssociationConnector>
+        <AssociationConnector Association="AppTourModel.FK_CITY_COUNTRIE" >
+          <ConnectorPoint PointX="2.25" PointY="12.865143229166669" />
+          <ConnectorPoint PointX="3" PointY="12.865143229166669" />
+        </AssociationConnector>
+        <AssociationConnector Association="AppTourModel.FK_POINTS_CITY" >
+          <ConnectorPoint PointX="4.5" PointY="12.865143229166669" />
+          <ConnectorPoint PointX="5.25" PointY="12.865143229166669" />
+        </AssociationConnector>
+        <AssociationConnector Association="AppTourModel.FK_CLASSIFICATION_EVENT" >
+          <ConnectorPoint PointX="8.25" PointY="16.75" />
+          <ConnectorPoint PointX="8.25" PointY="15.249746093750005" />
+          <ConnectorPoint PointX="9.0416666666666661" PointY="15.249746093750003" />
+          <ConnectorPoint PointX="9.4583333333333339" PointY="15.249746093750005" />
+          <ConnectorPoint PointX="9.5104166666666661" PointY="15.249746093750005" />
+          <ConnectorPoint PointX="9.6770833333333339" PointY="15.249746093750005" />
+          <ConnectorPoint PointX="9.75" PointY="15.249746093750005" />
+        </AssociationConnector>
+        <AssociationConnector Association="AppTourModel.FK_CLASSIFICATION_POINT" >
+          <ConnectorPoint PointX="6.75" PointY="14.490102539062505" />
+          <ConnectorPoint PointX="9.0416666666666661" PointY="14.490102539062503" />
+          <ConnectorPoint PointX="9.4583333333333339" PointY="14.490102539062505" />
+          <ConnectorPoint PointX="9.5104166666666661" PointY="14.490102539062505" />
+          <ConnectorPoint PointX="9.6770833333333339" PointY="14.490102539062505" />
+          <ConnectorPoint PointX="9.75" PointY="14.490102539062505" />
+        </AssociationConnector>
+        <AssociationConnector Association="AppTourModel.FK_CLASSIFICATION_USER" >
+          <ConnectorPoint PointX="9" PointY="10.557190755208325" />
+          <ConnectorPoint PointX="9.1910744349011217" PointY="10.748265190109445" />
+          <ConnectorPoint PointX="9.3089255650988783" PointY="10.866116320307203" />
+          <ConnectorPoint PointX="9.375" PointY="10.932190755208325" />
+          <ConnectorPoint PointX="9.375" PointY="15.968371140625" />
+          <ConnectorPoint PointX="9.4166666666666661" PointY="15.968371140624999" />
+          <ConnectorPoint PointX="9.6770833333333339" PointY="15.968371140625" />
+          <ConnectorPoint PointX="9.75" PointY="15.968371140625" />
+        </AssociationConnector>
+        <AssociationConnector Association="AppTourModel.FK_COMMENT_EVENT" >
+          <ConnectorPoint PointX="9" PointY="16.775383615384616" />
+          <ConnectorPoint PointX="9.06607443490112" PointY="16.709309180483494" />
+          <ConnectorPoint PointX="9.1839255650988783" PointY="16.591458050285738" />
+          <ConnectorPoint PointX="9.19107443490112" PointY="16.584309180483494" />
+          <ConnectorPoint PointX="9.3089255650988783" PointY="16.466458050285738" />
+          <ConnectorPoint PointX="9.375" PointY="16.400383615384616" />
+          <ConnectorPoint PointX="9.375" PointY="17.259095052083325" />
+          <ConnectorPoint PointX="12.375" PointY="17.259095052083325" />
+          <ConnectorPoint PointX="12.75" PointY="16.884095052083325" />
+        </AssociationConnector>
+        <AssociationConnector Association="AppTourModel.FK_COMMENT_POINTS" >
+          <ConnectorPoint PointX="6" PointY="15.10520507812501" />
+          <ConnectorPoint PointX="6" PointY="15.442047526041662" />
+          <ConnectorPoint PointX="6.3229191666666669" PointY="15.442047526041662" />
+          <ConnectorPoint PointX="6.4895858333333329" PointY="15.442047526041662" />
+          <ConnectorPoint PointX="8.1666666666666661" PointY="15.442047526041662" />
+          <ConnectorPoint PointX="8.3333333333333339" PointY="15.442047526041662" />
+          <ConnectorPoint PointX="9.0416666666666661" PointY="15.442047526041661" />
+          <ConnectorPoint PointX="9.4583333333333339" PointY="15.442047526041662" />
+          <ConnectorPoint PointX="9.5" PointY="15.442047526041662" />
+          <ConnectorPoint PointX="9.5" PointY="16.87449218750001" />
+          <ConnectorPoint PointX="12.375" PointY="16.87449218750001" />
+          <ConnectorPoint PointX="12.375" PointY="15.285795526041667" />
+          <ConnectorPoint PointX="12.75" PointY="15.285795526041667" />
+        </AssociationConnector>
+        <AssociationConnector Association="AppTourModel.FK_COMMENT_USER" >
+          <ConnectorPoint PointX="9" PointY="9.50454752604167" />
+          <ConnectorPoint PointX="9.1666666666666661" PointY="9.50454752604167" />
+          <ConnectorPoint PointX="9.3333333333333339" PointY="9.50454752604167" />
+          <ConnectorPoint PointX="9.3541666666666661" PointY="9.50454752604167" />
+          <ConnectorPoint PointX="9.5208333333333339" PointY="9.50454752604167" />
+          <ConnectorPoint PointX="13.90625" PointY="9.50454752604167" />
+          <ConnectorPoint PointX="13.90625" PointY="13.75" />
+        </AssociationConnector>
+        <AssociationConnector Association="AppTourModel.FK_EVENT_PICTURES_EVENT" >
+          <ConnectorPoint PointX="9" PointY="18.28125" />
+          <ConnectorPoint PointX="10.416666666666666" PointY="18.28125" />
+          <ConnectorPoint PointX="10.583333333333334" PointY="18.28125" />
+          <ConnectorPoint PointX="12.75" PointY="18.28125" />
+        </AssociationConnector>
+        <AssociationConnector Association="AppTourModel.FK_EVENT_POINT" >
+          <ConnectorPoint PointX="6.4062525" PointY="15.10520507812501" />
+          <ConnectorPoint PointX="6.4062525" PointY="18.413198242187505" />
+          <ConnectorPoint PointX="7.5" PointY="18.413198242187505" />
+        </AssociationConnector>
+        <AssociationConnector Association="AppTourModel.FK_EVENT_TOPIC_EVENT" >
+          <ConnectorPoint PointX="9" PointY="19.225698242187505" />
+          <ConnectorPoint PointX="9.75" PointY="19.225698242187505" />
+        </AssociationConnector>
+        <AssociationConnector Association="AppTourModel.FK_HOURS_EVENT" >
+          <ConnectorPoint PointX="9" PointY="16.756922076923075" />
+          <ConnectorPoint PointX="9.06607443490112" PointY="16.690847642021954" />
+          <ConnectorPoint PointX="9.1839255650988783" PointY="16.572996511824197" />
+          <ConnectorPoint PointX="9.19107443490112" PointY="16.565847642021954" />
+          <ConnectorPoint PointX="9.3089255650988783" PointY="16.447996511824197" />
+          <ConnectorPoint PointX="9.44107443490112" PointY="16.315847642021954" />
+          <ConnectorPoint PointX="9.5589255650988783" PointY="16.197996511824197" />
+          <ConnectorPoint PointX="9.59375" PointY="16.163172076923075" />
+          <ConnectorPoint PointX="9.59375" PointY="11.307444661458334" />
+          <ConnectorPoint PointX="9.75" PointY="11.307444661458334" />
+        </AssociationConnector>
+        <AssociationConnector Association="AppTourModel.FK_EVENT_TOPIC_TOPIC" >
+          <ConnectorPoint PointX="6.75" PointY="7.639150390624998" />
+          <ConnectorPoint PointX="9.25" PointY="7.639150390624998" />
+          <ConnectorPoint PointX="9.25" PointY="18" />
+          <ConnectorPoint PointX="10.5" PointY="18" />
+          <ConnectorPoint PointX="10.5" PointY="18.375" />
+        </AssociationConnector>
+        <AssociationConnector Association="AppTourModel.FK_HOURS_HOUR" >
+          <ConnectorPoint PointX="9" PointY="7.2148382427884572" />
+          <ConnectorPoint PointX="9.4375" PointY="7.6523382427884572" />
+          <ConnectorPoint PointX="9.4375" PointY="10.684970330729172" />
+          <ConnectorPoint PointX="9.75" PointY="10.684970330729172" />
+        </AssociationConnector>
+        <AssociationConnector Association="AppTourModel.FK_HOURS_POINT" >
+          <ConnectorPoint PointX="6.75" PointY="11.622472330729167" />
+          <ConnectorPoint PointX="7.041666666666667" PointY="11.622472330729167" />
+          <ConnectorPoint PointX="7.208333333333333" PointY="11.622472330729167" />
+          <ConnectorPoint PointX="9.1666666666666661" PointY="11.622472330729165" />
+          <ConnectorPoint PointX="9.4583333333333339" PointY="11.622472330729167" />
+          <ConnectorPoint PointX="9.5104166666666661" PointY="11.622472330729167" />
+          <ConnectorPoint PointX="9.6770833333333339" PointY="11.622472330729167" />
+          <ConnectorPoint PointX="9.75" PointY="11.622472330729167" />
+        </AssociationConnector>
+        <AssociationConnector Association="AppTourModel.FK_TRANSLATIONS_LANGUAGE" >
+          <ConnectorPoint PointX="2.25" PointY="2.1151432291666623" />
+          <ConnectorPoint PointX="3" PointY="2.1151432291666623" />
+        </AssociationConnector>
+        <AssociationConnector Association="AppTourModel.FK_PICTURE_POINT" >
+          <ConnectorPoint PointX="6.75" PointY="13.056287434895836" />
+          <ConnectorPoint PointX="7.041666666666667" PointY="13.056287434895836" />
+          <ConnectorPoint PointX="7.208333333333333" PointY="13.056287434895836" />
+          <ConnectorPoint PointX="7.25" PointY="13.056287434895836" />
+          <ConnectorPoint PointX="7.25" PointY="14.105286458333339" />
+          <ConnectorPoint PointX="9.125" PointY="14.105286458333339" />
+          <ConnectorPoint PointX="9.125" PointY="17.134095052083325" />
+          <ConnectorPoint PointX="9.1666666666666661" PointY="17.134095052083325" />
+          <ConnectorPoint PointX="9.4583333333333339" PointY="17.134095052083325" />
+          <ConnectorPoint PointX="12.416666666666666" PointY="17.134095052083325" />
+          <ConnectorPoint PointX="12.583333333333334" PointY="17.134095052083325" />
+          <ConnectorPoint PointX="13.5" PointY="17.134095052083325" />
+          <ConnectorPoint PointX="13.5" PointY="18.25" />
+        </AssociationConnector>
+        <AssociationConnector Association="AppTourModel.FK_ATTRIBUTE_POINT" >
+          <ConnectorPoint PointX="5.5937475" PointY="15.10520507812501" />
+          <ConnectorPoint PointX="5.5937475" PointY="24.970896809895834" />
+          <ConnectorPoint PointX="7.5" PointY="24.970896809895834" />
+        </AssociationConnector>
+        <AssociationConnector Association="AppTourModel.FK_POINT_TOPIC_POINT" >
+          <ConnectorPoint PointX="6.75" PointY="12.403143717447918" />
+          <ConnectorPoint PointX="7.041666666666667" PointY="12.403143717447918" />
+          <ConnectorPoint PointX="7.208333333333333" PointY="12.403143717447918" />
+          <ConnectorPoint PointX="7.5" PointY="12.403143717447918" />
+        </AssociationConnector>
+        <AssociationConnector Association="AppTourModel.FK_POINT_TOPIC_TOPIC" >
+          <ConnectorPoint PointX="6.75" PointY="9.45139648437501" />
+          <ConnectorPoint PointX="7.125" PointY="9.82639648437501" />
+          <ConnectorPoint PointX="7.125" PointY="13.455786446614589" />
+          <ConnectorPoint PointX="7.166666666666667" PointY="13.455786446614589" />
+          <ConnectorPoint PointX="7.333333333333333" PointY="13.455786446614589" />
+          <ConnectorPoint PointX="7.5" PointY="13.455786446614589" />
+        </AssociationConnector>
+        <AssociationConnector Association="AppTourModel.FK_SEARCH_PROFILE_TOPIC_SEARCH_PROFILE" >
+          <ConnectorPoint PointX="11.25" PointY="7.6151432291666694" />
+          <ConnectorPoint PointX="12" PointY="7.6151432291666694" />
+        </AssociationConnector>
+        <AssociationConnector Association="AppTourModel.FK_SEARCH_PROFILE_USER" >
+          <ConnectorPoint PointX="9" PointY="8.44204752604167" />
+          <ConnectorPoint PointX="9.1666666666666661" PointY="8.44204752604167" />
+          <ConnectorPoint PointX="9.3333333333333339" PointY="8.44204752604167" />
+          <ConnectorPoint PointX="9.3541666666666661" PointY="8.44204752604167" />
+          <ConnectorPoint PointX="9.5208333333333339" PointY="8.44204752604167" />
+          <ConnectorPoint PointX="9.5416666666666661" PointY="8.44204752604167" />
+          <ConnectorPoint PointX="9.7083333333333339" PointY="8.44204752604167" />
+          <ConnectorPoint PointX="9.75" PointY="8.44204752604167" />
+        </AssociationConnector>
+        <AssociationConnector Association="AppTourModel.FK_SEARCH_PROFILE_TOPIC_TOPIC" >
+          <ConnectorPoint PointX="6.75" PointY="7.4587230859375033" />
+          <ConnectorPoint PointX="9.1605515098157131" PointY="7.4587230859375024" />
+          <ConnectorPoint PointX="9.3272181764823809" PointY="7.4587230859375033" />
+          <ConnectorPoint PointX="9.625" PointY="7.4587230859375033" />
+          <ConnectorPoint PointX="9.625" PointY="9.1340950520833388" />
+          <ConnectorPoint PointX="12.75" PointY="9.1340950520833388" />
+          <ConnectorPoint PointX="12.75" PointY="8.6052864583333388" />
+        </AssociationConnector>
+        <AssociationConnector Association="AppTourModel.FK_TOPIC_THEME" >
+          <ConnectorPoint PointX="4.5" PointY="7.7785953776041623" />
+          <ConnectorPoint PointX="5.25" PointY="7.7785953776041623" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

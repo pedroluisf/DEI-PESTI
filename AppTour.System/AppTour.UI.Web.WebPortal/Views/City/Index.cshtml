@@ -1,0 +1,56 @@
+﻿@model IEnumerable<AppTour.Model.Models.City.CityModel>
+@{
+    ViewBag.Title = @ViewRes.City.Titulo;
+}
+<script type="text/javascript">
+    $(function () {
+        $(".jbutton").button();
+        $(".edit").button({
+            icons: {
+                primary: "ui-icon-pencil"
+            }
+            , text: false
+        });
+        $(".trash").button({
+            icons: {
+                primary: "ui-icon-trash"
+            }, text: false
+        });
+    });
+</script>
+<p>
+    @Html.ActionLink(@ViewRes.City.Novo, "Create", new { controller = "City" }, new { @class = "jbutton" })
+</p>
+<div class="ui-widget">
+    <table class="ui-widget ui-widget-content">
+        <thead>
+            <tr>
+                <td class="ui-widget-header" style="text-align: center;">
+                    @ViewRes.City.Pais
+                </td>
+                <td class="ui-widget-header">
+                    @ViewRes.City.Nome
+                </td>
+                <td class="ui-widget-header">
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="text-align: center;">
+                        @Html.DisplayFor(modelItem => item.Country.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td style="text-align: center;">
+                        <a href="@Url.Action("Edit", new { id = item.Id })" class="edit" >@ViewRes.SharedStrings.Editar</a>
+                        <a href="@Url.Action("Delete", new { id = item.Id })" class="trash">@ViewRes.SharedStrings.Apagar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

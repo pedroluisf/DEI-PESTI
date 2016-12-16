@@ -1,0 +1,52 @@
+﻿@model AppTour.Model.Models.Language.LanguageModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = @ViewRes.Language.Nova;
+}
+<script type="text/javascript">
+    $(function () {
+        $("input:submit, button, #button").button();
+        $("#Name").addClass("text ui-widget-content ui-corner-all");
+        $("#ISO2").addClass("text ui-widget-content ui-corner-all");
+
+    });
+</script>
+<script src="<@Url.Content("~/Scripts/MicrosoftAjax.debug.js")" type="text/javascript"></script>
+<script src="<@Url.Content("~/Scripts/MicrosoftMvcAjax.debug.js")" type="text/javascript"></script>
+<script src="<@Url.Content("~/Scripts/MicrosoftMvcValidation.debug.js")" type="text/javascript"></script>
+@using (Html.BeginForm())
+{
+    
+
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>@ViewRes.Language.LinguaHeader</legend>
+        <div class="editor-label">
+            @Html.Label(@ViewRes.Language.Nome)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+        <div class="editor-label">
+            @Html.Label(@ViewRes.Language.ISO)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ISO2)
+            @Html.ValidationMessageFor(model => model.ISO2)
+        </div>
+        <div class="editor-label">
+            @Html.Label(@ViewRes.Language.Activo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsActive)
+            @Html.ValidationMessageFor(model => model.IsActive)
+        </div>
+        <p>
+            <input type="submit" value="@ViewRes.Language.Criar" />
+        </p>
+    </fieldset>
+}
+<div>
+    <a href="@ViewBag.ReturnUrl" id="button">@ViewRes.Translation.Back</a>
+</div>

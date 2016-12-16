@@ -1,0 +1,77 @@
+﻿@model IList<AppTour.Model.Models.SearchProfile.SearchProfileModel>
+<script type="text/javascript">
+    $(function () {
+        $(".jbutton").button();
+        $(".edit").button({
+            icons: {
+                primary: "ui-icon-pencil"
+            }
+            , text: false
+        });
+        $(".url").button({
+            icons: {
+                primary: "ui-icon-signal-diag"
+            }
+            , text: false
+        });
+        $(".trash").button({
+            icons: {
+                primary: "ui-icon-trash"
+            }, text: false
+        });
+    });
+</script>
+<p>
+    @Html.ActionLink(@ViewRes.SearchProfile.Novo, "Create", new { controller = "SearchProfile" }, new { @class = "jbutton" })
+</p>
+<div class="ui-widget">
+    <table class="ui-widget ui-widget-content">
+        <thead>
+            <tr>
+                <th class="ui-widget-header">
+                    @ViewRes.Point.Nome
+                </th>
+                <th class="ui-widget-header">
+                    @ViewRes.SearchProfile.PointsRangeDistance
+                </th>
+                <th class="ui-widget-header">
+                    @ViewRes.SearchProfile.EventsSearchDays
+                </th>
+                <th class="ui-widget-header" style="text-align: center;">
+                    @ViewRes.SearchProfile.SearchCriteria
+                </th>
+                <th class="ui-widget-header" style="text-align: center;">
+                    @ViewRes.SharedStrings.Activo
+                </th>
+                <th class="ui-widget-header">
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.PointsRangeDistance
+                    </td>
+                    <td>
+                        @item.EventsSearchDays
+                    </td>
+                    <td>
+                        @item.SearchCriteria
+                    </td>
+                    <td style="text-align: center;">
+                        <img src="@Url.Content("~/Content/images/" + @item.IsActive + ".png")" alt=""/>
+                    </td>
+                    <td style="text-align: center; width: 100px;">
+                        <a href="@Url.Action("Edit", new { id = item.Id })" class="edit ">@ViewRes.SharedStrings.Editar</a>
+                        <a href="@Url.Action("Delete", new { id = item.Id })" class="trash">@ViewRes.SharedStrings.Apagar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

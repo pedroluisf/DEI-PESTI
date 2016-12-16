@@ -1,0 +1,36 @@
+﻿// JSON C# Class Generator
+// http://at-my-window.blogspot.com/?page=json-class-generator
+
+using JsonCSharpClassGenerator;
+using Newtonsoft.Json.Linq;
+
+namespace AppTour.Agents.GoogleLocals.JsonTypes
+{
+
+    public class Southwest
+    {
+
+        private JObject __jobject;
+        public Southwest(JObject obj)
+        {
+            this.__jobject = obj;
+        }
+
+        public double Lat
+        {
+            get
+            {
+                return JsonClassHelper.ReadFloat(JsonClassHelper.GetJToken<JValue>(__jobject, "lat"));
+            }
+        }
+
+        public double Lng
+        {
+            get
+            {
+                return JsonClassHelper.ReadFloat(JsonClassHelper.GetJToken<JValue>(__jobject, "lng"));
+            }
+        }
+
+    }
+}

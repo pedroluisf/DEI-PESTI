@@ -1,0 +1,73 @@
+﻿.skew1, .skew3
+{
+    font: 60px/80px Candal;
+    line-height: 100px;
+    -webkit-transform: skewY(-26.6deg);
+    -moz-transform: skewY(-26.6deg);
+    -o-transform: skewY(-26.6deg);
+    text-shadow: -1px -1px 0px #999, -2px -2px 0px #888, -3px -3px 0px #777, -4px -4px 0px #666, -5px -5px 0px #555, -5px -5px 0px #444, -5px -5px 0px #333, -5px -5px 5px #222;
+    position: absolute;
+    z-index: 100;
+    text-align: center;
+}
+
+.skew1
+{
+    top: 100px;
+    left: 80px;
+}
+
+.skew3
+{
+    top: 170px;
+    left: 240px;
+}
+
+.skew2, .skew4
+{
+    color: rgba(0,0,0,0);
+    font: 60px/80px Candal;
+    line-height: 100px;
+    -webkit-transform: skew(63deg,-26.6deg);
+    -moz-transform: skew(63deg,-26.6deg);
+    -o-transform: skew(63deg,-26.6deg);
+    text-shadow: 0 0 4px rgba(0,0,0,0.3);
+    position: absolute;
+    z-index: 50;
+}
+
+.skew2
+{
+    top: 100px;
+    left: 40px;
+}
+
+.skew4
+{
+    top: 170px;
+    left: 200px;
+}
+
+.text-block
+{
+    width: 360px;
+    height: 200px;
+    position: absolute;
+    top: 270px;
+    left: 490px;
+    text-align: center;
+}
+
+.skew5
+{
+    color: rgba(153,153,153,1);
+    font: 14px/18px Candal;
+    text-shadow: -2px 1px 2px #CCCCCC,-3px 1px 2px #DDDDDD;
+    text-align: center;
+    -webkit-transform: skew(63deg,-26.6deg);
+    -moz-transform: skew(63deg,-26.6deg);
+    -o-transform: skew(63deg,-26.6deg);
+    position: absolute;
+    z-index: 50;
+    text-align: center;
+}

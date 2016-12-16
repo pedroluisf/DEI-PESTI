@@ -1,0 +1,67 @@
+﻿@model AppTour.Model.Models.Topic.TopicModel
+@{
+    ViewBag.Title = @ViewRes.Topic.Editar;
+}
+<script type="text/javascript">
+    $(function () {
+        $("input:submit, button, #button").button();
+        $("#Theme_Id").addClass("text ui-widget ui-corner-all");
+        $("#Name").addClass("text ui-widget-content ui-corner-all");
+        $("#Description").addClass("text ui-widget-content ui-corner-all");
+        $("#Image").addClass("text ui-widget-content ui-corner-all");
+        $("#IsActive").addClass("text ui-widget-content ui-corner-all");
+    });
+</script>
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>@ViewRes.Topic.TopicHeader</legend>
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.CreationDate)
+        @Html.HiddenFor(model => model.UpdateDate)
+        <div class="editor-label">
+            @Html.Label(@ViewRes.Topic.Nome)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+        <div class="editor-label">
+            @Html.Label(@ViewRes.Topic.Descricao)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+        <div class="editor-label">
+            @Html.Label(@ViewRes.Topic.Imagem)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Image)
+            @Html.ValidationMessageFor(model => model.Image)
+        </div>
+        <div class="editor-label">
+            @Html.Label(@ViewRes.Topic.Theme)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model => model.Theme.Id, (SelectList)ViewBag.themes)
+            @Html.ValidationMessageFor(model => model.Theme.Id)
+        </div>
+        <div class="editor-label">
+            @Html.Label(@ViewRes.Topic.Activo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsActive)
+            @Html.ValidationMessageFor(model => model.IsActive)
+        </div>
+        <p>
+            <input type="submit" value="@ViewRes.SharedStrings.Save" />
+        </p>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink(@ViewRes.Language.Lista, "Index", new { controller = "Topic" }, new { id = "button" })
+</div>

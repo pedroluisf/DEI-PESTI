@@ -1,0 +1,16 @@
+﻿@model IEnumerable<AppTour.Model.Models.Point.PointModel>
+@{
+    ViewBag.Title = "Display";
+}
+<h2>@ViewBag.Title</h2>
+<script type="text/javascript">
+    $(function () {
+        $("input:checkbox, button, #button").button();
+        $("#SearchProfile").addClass("text ui-widget ui-corner-all").css("height", "28");
+        $("#Terms").addClass("text ui-widget-content ui-corner-all").css("height", "28").css("width", "200");
+        $("#save").button({ icons: { primary: "ui-icon-disk"} });
+        $("#save").click(function () {
+            $("#findit").submit();
+        });
+    });
+</script>

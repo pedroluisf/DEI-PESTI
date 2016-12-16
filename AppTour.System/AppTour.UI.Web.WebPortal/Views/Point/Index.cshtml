@@ -1,0 +1,82 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@{
+    ViewBag.Title = @ViewRes.Point.Titulo;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="@Url.Content("~/Content/PagedList.css")" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+    $(function () {
+        $(".jbutton").button();
+        $(".edit").button({
+            icons: {
+                primary: "ui-icon-pencil"
+            }
+            , text: false
+        });
+        $(".url").button({
+            icons: {
+                primary: "ui-icon-signal-diag"
+            }
+            , text: false
+        });
+        $(".trash").button({
+            icons: {
+                primary: "ui-icon-trash"
+            }, text: false
+        });
+    });
+</script>
+<p>
+    @Html.ActionLink(@ViewRes.Point.Novo, "Create", new { controller = "Point" }, new { @class = "jbutton" })
+</p>
+<div class="ui-widget">
+    <table class="ui-widget ui-widget-content">
+        <thead>
+            <tr>
+                <th class="ui-widget-header">
+                    @ViewRes.Point.Nome
+                </th>
+                <th class="ui-widget-header">
+                    @ViewRes.Point.Endereco
+                </th>
+                <th class="ui-widget-header">
+                    @ViewRes.Point.PhoneNumber
+                </th>
+                <th class="ui-widget-header" style="text-align: center;">
+                    @ViewRes.Point.URL
+                </th>
+                <th class="ui-widget-header" style="width: 80px;">
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (AppTour.Model.Models.Point.PointModel point in ViewBag.OnePage)
+            {
+                <tr>
+                    <td>
+                        @point.Name
+                    </td>
+                    <td>
+                        @point.Address @point.PostalCode<br />
+                        <small>@point.City.Name</small>
+                    </td>
+                    <td>
+                        @point.PhoneNumber
+                    </td>
+                    <td style="text-align: center;">
+                        @if (point.URL != null && point.URL != string.Empty)
+                        { 
+                            <a href="@point.URL" class="url" target="_blank">@point.URL</a>
+                        }
+                    </td>
+                    <td style="text-align: center;">
+                        <a href="@Url.Action("Edit", new { id = point.Id })" class="edit ">@ViewRes.SharedStrings.Editar</a>
+                        <a href="@Url.Action("Delete", new { id = point.Id })" class="trash">@ViewRes.SharedStrings.Apagar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @Html.PagedListPager((IPagedList)ViewBag.TotalPages, page => Url.Action("Index", new { page = page }), new PagedListRenderOptions { LinkToFirstPageFormat = @ViewRes.SharedStrings.Primeira, LinkToPreviousPageFormat = @ViewRes.SharedStrings.Anterior, LinkToNextPageFormat = @ViewRes.SharedStrings.Seguinte, LinkToLastPageFormat = @ViewRes.SharedStrings.Ultima })
+</div>

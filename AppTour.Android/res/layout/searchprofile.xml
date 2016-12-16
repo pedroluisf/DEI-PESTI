@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:stretchColumns="1" >
+
+    <TableRow>
+
+        <Button
+            android:id="@+id/button_location"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="save"
+            android:text="@string/button_save" />
+
+        <Button
+            android:id="@+id/button_filters"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="saveAs"
+            android:text="@string/button_save_as" />
+
+        <Button
+            android:id="@+id/button_delete"
+            android:layout_width="0dip"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="delete"
+            android:text="@string/button_delete" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+			android:layout_span="3"
+            android:orientation="vertical" android:scrollbars="vertical">
+
+            <TextView
+                android:id="@+id/tvSearchProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:text="@string/set_search_profile"
+                android:textAppearance="?android:attr/textAppearanceMedium" android:layout_marginTop="10dp"/>
+
+            <Spinner
+                android:id="@+id/spSearchProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tvSearchCriteria"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:text="@string/set_search_criteria"
+                android:textAppearance="?android:attr/textAppearanceMedium" android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:id="@+id/etSerachCriteria"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/hint_search_criteria" >
+
+                <requestFocus />
+            </EditText>
+
+            <TextView
+                android:id="@+id/tvSearchDistanceTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:text="@string/set_search_distance"
+                android:textAppearance="?android:attr/textAppearanceMedium" android:layout_marginTop="10dp"/>
+
+            <SeekBar
+                android:id="@+id/sbSearchDistance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" android:max="20" android:progress="10"/>
+
+	        <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="vertical"
+	            android:gravity="center">
+	
+	            <TextView
+	                android:id="@+id/tvSearchDistance"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content" 
+	                android:layout_marginTop="10dp"
+	                android:layout_marginBottom="10dp"
+                	android:text="10 Km" />
+	            
+        	</LinearLayout>
+        	
+            <TextView
+                android:id="@+id/tvSearchTimespanTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:text="@string/set_search_timespan"
+                android:textAppearance="?android:attr/textAppearanceMedium" android:layout_marginTop="10dp"/>
+
+            <SeekBar
+                android:id="@+id/sbSearchTimespan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp" android:max="30" android:progress="10"/>
+
+	        <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="vertical"
+	            android:gravity="center">
+	
+	            <TextView
+	                android:id="@+id/tvSearchTimeSpan"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginTop="10dp"
+	                android:layout_marginBottom="10dp"
+	                android:text="10 days" />
+
+        	</LinearLayout>
+
+	        <LinearLayout
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:orientation="vertical" 
+	            android:gravity="center">
+	            
+			    <Button
+			        android:id="@+id/button_themes"
+			        android:layout_width="200dp"
+			        android:layout_height="wrap_content"
+			        android:onClick="setThemes"
+			        android:text="@string/button_themes" android:layout_marginTop="10dp"/>
+
+	            	            
+	        </LinearLayout>
+        	
+        </LinearLayout>
+    </TableRow>
+
+</TableLayout>

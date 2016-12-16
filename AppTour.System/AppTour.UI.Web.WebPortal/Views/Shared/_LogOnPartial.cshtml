@@ -1,0 +1,147 @@
+﻿@Html.ActionLink(ViewRes.SharedStrings.Home, "Index", new { controller = "Home" }, new { @class = "button blue bigrounded" })
+@if (Request.IsAuthenticated && Session["REALNAME"] != null)
+{
+    @Html.ActionLink(Session["REALNAME"].ToString(), "Profile", "Account", new { id = Session["USERNAME"].ToString() }, new { @class = "button orange bigrounded" })
+    @Html.ActionLink(ViewRes.SharedStrings.LogOff, "LogOff", new { controller = "Account" }, new { @class = "button blue bigrounded" })
+   
+}
+else
+{
+    <a href="#" id="login" class="button blue bigrounded">@ViewRes.SharedStrings.LogOn</a>
+	
+    <script type="text/javascript">
+	$(function () {
+	String.prototype.format = function() {
+	  var args = arguments;
+	  return this.replace(/{(\d+)}/g, function(match, number) { 
+		return typeof args[number] != 'undefined'
+		  ? args[number]
+		  : match
+		;
+	  });
+	};
+		$("#login").click(function () {
+				$("#dialog:ui-dialog").dialog("destroy");
+				$("#dialog-form").dialog("open");
+			
+		});
+		var name = $("#username"),
+			password = $("#password"),
+            remember = $("#remember"),
+			allFields = $([]).add(name).add(password).add(remember),
+			tips = $(".validateTips");
+
+		
+		function updateTips(t) {
+			tips.text(t).addClass("ui-state-highlight");
+			setTimeout(function () {tips.removeClass("ui-state-highlight", 1500);}, 500);
+		}
+
+		function checkLength(o, n, min, max) {
+			if (o.val().length > max || o.val().length < min) {
+				o.addClass("ui-state-error");
+				var str = '@ViewRes.Login.ErrorLength';
+				updateTips(str.format(n,min,max));
+				return false;
+			} else {
+				return true;
+			}
+		}
+
+		function checkRegexp(o, regexp, n) {
+			if (!(regexp.test(o.val()))) {
+				o.addClass("ui-state-error");
+				updateTips(n);
+				return false;
+			} else {
+				return true;
+			}
+		}
+		$( "#remember" ).button();
+        $("#dialog:ui-dialog").dialog("destroy");
+
+		$("#dialog-form").dialog({
+			autoOpen: false,
+			height: 290,
+			width: 350,
+			show: { effect: 'drop', direction: "up" },
+			hide: { effect: 'drop', direction: "down" },
+			modal: true,
+			resizable: false ,
+			open: function() { $("#username").val(""); $("#password").val(""); },
+			buttons: {
+				'@ViewRes.Login.Entrar': function () {
+					var bValid = true;
+					allFields.removeClass("ui-state-error");
+					
+
+					bValid = bValid && checkLength(name, "username", 3, 80);
+					bValid = bValid && checkLength(password, "password", 6, 15);
+
+					if (bValid) {
+						var data = jQuery('#form-id').serialize();
+						$.ajax(
+						{
+							url: "@Url.Content("~/Account/Login")",
+							secureuri: false,
+							data: data,
+							dataType: 'text',
+							success: function (data, status) {
+								if (status == 'success') {
+									if (data == 'Sucesso') {
+										updateTips('@ViewRes.Login.Sucesso');
+									    $("#dialog-form").dialog("close");
+										setTimeout(function() { location.reload(); }, 500);
+									}
+                                    else {
+                                        updateTips(data);
+                                    }
+								}
+							},
+							error: function (data, status, e) {
+								alert(e);
+							}
+			
+					  });
+
+					}
+				},
+				Cancel: function () {
+					$(this).dialog("close");
+				}
+			},
+			close: function () {
+				allFields.removeClass("ui-state-error");
+			}
+		});
+
+	});
+    </script>
+    <style type="text/css">
+        .validateTips
+        {
+            border: 1px solid transparent;
+            padding: 0.1em;
+            text-align: center;
+        }
+    </style>
+    <div id="dialog-form" title="@ViewRes.Login.Titulo" style="display: none;">
+        <p class="validateTips">
+            <strong>@ViewRes.Login.Titulo:</strong> @ViewRes.Login.Request</p>
+        <form id="form-id">
+        <fieldset style="padding: 0; border: 0;">
+            <label for="username" style="display: block;">
+                @ViewRes.Login.Utilizador
+            </label>
+            <input type="text" name="username" id="username" value="" style="display: block;
+                width: 95%;" class="text ui-widget-content ui-corner-all" />
+            <label for="password" style="display: block;">
+                @ViewRes.Login.Password
+            </label>
+            <input type="password" name="password" id="password" value="" style="display: block;
+                width: 95%;" class="text ui-widget-content ui-corner-all" />
+            <input type="checkbox" name="remember" id="remember" /><label for="remember" style="margin-top: 8px;">@ViewRes.Login.Lembrar</label>
+        </fieldset>
+        </form>
+    </div>
+}

@@ -1,0 +1,509 @@
+﻿@model AppTour.UI.Web.WebPortal.Models.PointAttributeViewModel
+@{
+    ViewBag.Title = @ViewRes.Attribute.Titulo;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string _action = "";
+}
+<script type="text/javascript">
+    $(function () {
+     $(".url").button({
+            icons: {
+                primary: "ui-icon-signal-diag"
+            }
+            , text: false
+        });
+        $(".edit").button({
+            icons: {
+                primary: "ui-icon-pencil"
+            }
+            , text: false
+        });
+        $(".translate").button({
+            icons: {
+                primary: "ui-icon-flag"
+            }
+            , text: false
+        });
+           $(".trash").button({
+            icons: {
+                primary: "ui-icon-trash"
+            }, text: false
+        });
+         $("#back").button({
+            icons: {
+                primary: "ui-icon-circle-arrow-w"
+            }
+        });
+        $("#active").button();
+        $(".delete").button({ icons: { primary: "ui-icon-trash"} });
+        
+        $(".trash").click(function() {
+                idToDelete = $(this).attr('id');
+				$("#dialog-confirm").dialog("open");
+        });
+        $(".edit").click(function() {
+                idToEdit = $(this).attr('id');
+                type = "Edit"; 
+                var arr = idToEdit.split("|");
+                idToEdit = arr[0];
+                _attrKey = arr[1];
+                _attrValue = arr[2];
+                _attrType = arr[3];
+                _attrActive = arr[4];
+				$("#dialog-form").dialog("open");
+        });
+        $("#attribute").button({ icons: { primary: "ui-icon-tag"} });
+        $("#addattribute").button({ icons: { primary: "ui-icon-plusthick"} });
+        $("#save").button({ icons: { primary: "ui-icon-disk"} });
+        $("#save").click(function() {
+            $("#points").submit();
+        });
+
+        $("#addattribute").click(function () {
+                type = "New";
+				$("#dialog:ui-dialog").dialog("destroy");
+				$("#dialog-form").dialog("open");
+			
+		});
+
+        var idToDelete = null;
+        var type = null;
+
+        var idToEdit = "";
+
+        var _attrKey = null;
+        var _attrValue = null;
+        var _attrActive = null;
+        var _attrType = null;
+
+        var attrtype = $("#attrtype"),
+			attrkey = $("#attrkey"),
+            attrvalue = $("#attrvalue"),
+            PointId= $("#PointId"),
+			allFields = $([]).add(attrtype).add(attrkey).add(attrvalue).add(PointId),
+			tips = $(".validateTips");
+
+
+        String.prototype.format = function() {
+            var args = arguments;
+            return this.replace(/{(\d+)}/g, function(match, number) { 
+                return typeof args[number] != 'undefined'
+                ? args[number]
+                : match
+                ;
+            });
+        };
+        function updateTips(t) {
+			tips.text(t).addClass("ui-state-highlight");
+			setTimeout(function () {tips.removeClass("ui-state-highlight", 1500);}, 500);
+		}
+
+		function checkLength(o, n, min, max) {
+			if (o.val().length > max || o.val().length < min) {
+				o.addClass("ui-state-error");
+				var str = '@ViewRes.Login.ErrorLength';
+				updateTips(str.format(n,min,max));
+				return false;
+			} else {
+				return true;
+			}
+		}
+
+		function checkRegexp(o, regexp, n) {
+			if (!(regexp.test(o.val()))) {
+				o.addClass("ui-state-error");
+				updateTips(n);
+				return false;
+			} else {
+				return true;
+			}
+		}
+
+        function checkType(key, value, type)
+        {
+        
+            dataType = type.val();
+            if (dataType == "System.String")
+            {
+                if (value.val().length > 0)
+                {
+                    return true;
+                }else {
+                    type.addClass("ui-state-error");
+                    updateTips("@ViewRes.Attribute.TypeDontMatch");
+                    return false;
+                }
+            }
+
+            if (dataType == "System.Decimal")
+            {
+                if (jQuery.isNumeric(value.val()))
+                {
+                    return true;
+                } 
+                else {
+                    type.addClass("ui-state-error");
+                    updateTips("@ViewRes.Attribute.TypeDontMatch");
+                    return false;
+                }
+            }
+            if (dataType == "System.Boolean")
+            {
+                actualValue = value.val();
+                if (actualValue.toLowerCase() == "true" || actualValue.toLowerCase() == "false" || actualValue.toLowerCase() == "1" || actualValue.toLowerCase() == "0") {
+                    return true;
+                }else {
+                    type.addClass("ui-state-error");
+                    updateTips("@ViewRes.Attribute.TypeDontMatch");
+                    return false;
+                }
+            }
+            if (dataType == "System.DateTime"){
+                if (value.val().match(/^\d\d?\/\d\d?\/\d\d\d\d$/))
+                {
+                    return true;
+                }
+                else {
+                    type.addClass("ui-state-error");
+                    updateTips("@ViewRes.Attribute.TypeDontMatch" + "(DD/MM/YYYY)");
+                    return false;
+                }
+            }
+            return false;
+            
+        }
+
+        $("#dialog:ui-dialog").dialog("destroy");
+		$("#dialog-form").dialog({
+			autoOpen: false,
+			height: 350,
+			width: 350,
+			show: { effect: 'drop', direction: "up" },
+			hide: { effect: 'drop', direction: "down" },
+			modal: true,
+			resizable: false ,
+			open: function() { if (type != "Edit") { $("#attrkey").val(""); $("#attrvalue").val(""); } else { $("#attrkey").val(_attrKey); $("#attrvalue").val(_attrValue); $("#attrtype").val(_attrType); $("#attrtype").attr("selectedIndex",_attrType); $("#active").prop("checked", _attrActive); } },
+			buttons: {
+				Ok: function () {
+					var bValid = true;
+					allFields.removeClass("ui-state-error");
+					tips.text("");
+
+					bValid = bValid && checkLength(attrkey, "attrkey", 1, 80);
+					bValid = bValid && checkLength(attrvalue, "attrvalue", 1, 80);
+                    bValid = bValid && checkType(attrkey, attrvalue, attrtype);
+
+
+					if (bValid) {
+						
+                        var url = null;
+
+                        if (type == "Edit")
+                        {
+                            url = "@Url.Content("~/Attribute/EditAttribute")";
+                            data = "PointId=@Model.Point.Id&AttributeId="+idToEdit+"&attrkey="+$("#attrkey").val()+"&attrvalue="+$("#attrvalue").val()+"&attrtype="+$("#attrtype").val()+"&active="+$("#active").attr("checked");
+                        }else {
+                            url = "@Url.Content("~/Attribute/InsertAttribute")";
+                            var data = jQuery('#form-id').serialize();
+                        }
+						$.ajax(
+						{
+							url: url,
+							secureuri: false,
+							data: data,
+							dataType: 'text',
+							success: function (data, status) {
+								if (status == 'success') {
+									if (data == 'Sucesso') {
+                                    if (type == "Edit") {
+                                    updateTips('@ViewRes.Attribute.EdtSucess');
+                                    }else {
+										updateTips('@ViewRes.Attribute.Sucess');
+                                        }
+                                        $("#attrkey").val(""); $("#attrvalue").val("");
+                                        if (type == "Edit")
+                                        {
+                                            setTimeout(function() { location.reload(); }, 100);
+                                        }
+
+									}else 
+                                    {
+                                        updateTips(data);
+                                    }
+
+								}
+							},
+							error: function (data, status, e) {
+								alert(e);
+							}
+			
+					  });
+
+					}
+				},
+				"@ViewRes.SharedStrings.Fechar": function () {
+					$(this).dialog("close");
+				}
+			},
+			close: function () {
+				allFields.removeClass("ui-state-error");
+                if (type != "Edit") {
+                    setTimeout(function() { location.reload(); }, 500);
+                }
+			}
+		});
+
+        /*
+            Confirm Delete Dialog
+        */
+        $( "#dialog-confirm" ).dialog({
+					resizable: false,
+					autoOpen : false,
+					height:215,
+					modal: true,
+					show: { effect: 'drop', direction: "up" },
+					hide: { effect: 'drop', direction: "down" },
+					buttons: {
+						"@ViewRes.Attribute.Delete": function() {
+                        $.ajax(
+						{   
+							url: "@Url.Content("~/Attribute/DeleteAttribute")",
+							secureuri: false,
+							data: "PointId=@Model.Point.Id&AttributeID=" + idToDelete,
+							dataType: 'text',
+							success: function (data, status) {
+								if (status == 'success') {
+									if (data == 'Sucesso') {
+									   $("#dialog-form").dialog("close");
+                                       setTimeout(function() { location.reload(); }, 100);
+									}else 
+                                    {
+                                        alert(data); 
+                                    }
+								}
+							},
+							error: function (data, status, e) {
+								alert(e);
+							}
+			
+					  });
+					  },
+						Cancel: function() {
+							$( this ).dialog( "close" );
+						}
+					}
+				});
+	});
+</script>
+<div class="ui-widget">
+    <table class="ui-widget ui-widget-content">
+        <thead>
+            <tr>
+                <th class="ui-widget-header">
+                    @ViewRes.Point.Nome
+                </th>
+                <th class="ui-widget-header">
+                    @ViewRes.Point.Endereco
+                </th>
+                <th class="ui-widget-header">
+                    @ViewRes.Point.PostalCode
+                </th>
+                <th class="ui-widget-header">
+                    @ViewRes.Point.City
+                </th>
+                <th class="ui-widget-header">
+                    @ViewRes.Point.Coordenada
+                </th>
+                <th class="ui-widget-header">
+                    @ViewRes.Point.PhoneNumber
+                </th>
+                <th class="ui-widget-header" style="text-align: center;">
+                    @ViewRes.Point.URL
+                </th>
+                <th class="ui-widget-header" style="text-align: center;">
+                    @ViewRes.Point.SourceURL
+                </th>
+                <th class="ui-widget-header" style="text-align: center;">
+                    @ViewRes.Point.Atributos
+                </th>
+                <th class="ui-widget-header" style="text-align: center;">
+                    @ViewRes.Point.Topicos
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    @Model.Point.Name
+                </td>
+                <td>
+                    @Model.Point.Address
+                </td>
+                <td>
+                    @Model.Point.PostalCode
+                </td>
+                <td>
+                    @Model.Point.City.Name
+                </td>
+                <td>
+                    @Model.Point.Coordenate
+                </td>
+                <td>
+                    @Model.Point.PhoneNumber
+                </td>
+                <td style="text-align: center;">
+                    <a href="@Model.Point.URL" class="url" target="_blank">@Model.Point.URL</a>
+                </td>
+                <td style="text-align: center;">
+                    <a href="@Model.Point.SourceURL" class="url" target="_blank">@Model.Point.SourceURL</a>
+                </td>
+                <td style="text-align: center;">
+                    @{
+                        int numberAttributes = (Model.Attributes != null ? Model.Attributes.Count : 0);
+                        <text>@numberAttributes</text>
+                    }
+                </td>
+                <td style="text-align: center;">
+                    @{int numberTopics = (Model.Point.Topics != null ? Model.Point.Topics.Count : 0);
+                        <text>@numberTopics</text>}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<p>
+    @Html.ActionLink(@ViewRes.Attribute.BackToPoint, "Edit", new { controller = "Point", id = @Model.Point.Id }, new { id = "back" })
+</p>
+<style type="text/css">
+    .validateTips
+    {
+        border: 1px solid transparent;
+        padding: 0.1em;
+        text-align: center;
+        color: Black;
+    }
+    .ui-dialog .ui-state-error
+    {
+        color: Black;
+    }
+</style>
+<fieldset style="margin: 0 auto; width: 80%;">
+    <legend>@ViewRes.Attribute.Titulo - @Model.Point.Name</legend><a href="#" id="addattribute"
+        style="margin-bottom: 10px;">@ViewRes.Point.AddAtributos</a>
+    <div class="ui-widget">
+        <table class="ui-widget ui-widget-content">
+            <thead>
+                <tr>
+                    <th class="ui-widget-header">
+                        @ViewRes.Attribute.Key
+                    </th>
+                    <th class="ui-widget-header">
+                        @ViewRes.Attribute.Value
+                    </th>
+                    <th class="ui-widget-header">
+                        @ViewRes.Attribute.ValueType
+                    </th>
+                    <th class="ui-widget-header" style="text-align: center;">
+                        @ViewRes.Attribute.Active
+                    </th>
+                    <th class="ui-widget-header" style="text-align: center;">
+                        @ViewRes.SharedStrings.Translated
+                    </th>
+                    <th class="ui-widget-header" style="width: 120px;">
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (AppTour.Model.Models.PointsAttributes.PointAttributeModel item in @Model.Attributes)
+                { 
+                    <tr>
+                        <td>@item.KeyPair
+                        </td>
+                        <td>
+                            @{
+                    string type = @item.Value_Type;
+                    string balue = null;
+                    int i = 0;
+                    if (type == "System.Boolean")
+                    {
+                        i = 0;
+                        balue = item.Value_bool.ToString();
+                                <text>@item.Value_bool</text>
+                    }
+                    else if (type == "System.DateTime")
+                    {
+                        i = 2;
+                        balue = item.Value_Date.ToString();
+                                <text>@item.Value_Date</text>
+                    }
+                    else if (type == "System.String")
+                    {
+                        i = 1;
+                        balue = item.Value_string;
+                                <text>@item.Value_string</text>
+                    }
+                    else
+                    {
+                        i = 3;
+                        balue = item.Value_number.ToString();
+                                <text>@item.Value_number</text>
+                    }
+                            }
+                        </td>
+                        <td>
+                            @type
+                        </td>
+                        <td style="text-align: center;">
+                            <img src="@Url.Content("~/Content/images/" + @item.IsActive + ".png")" alt="" />
+                        </td>
+                        <td style="text-align: center;">@item.NumberOfTranslations
+                        </td>
+                        <td style="text-align: center; width: 100px;">
+                            <a href="@Url.Action("Record", "Translation", new { Table = "POINTS_ATTRIBUTES", ForeignId = item.Id, Instance = "Point" })" class="translate" >@ViewRes.SharedStrings.Translate</a>
+                            <a href="#" id="@item.Id|@item.KeyPair|@balue|@item.Value_Type|@item.IsActive" class="edit">@ViewRes.SharedStrings.Editar</a>
+                            <a href="#" id="@item.Id" class="trash">@ViewRes.SharedStrings.Apagar</a>
+                        </td>
+                    </tr>
+                
+                }
+            </tbody>
+        </table>
+    </div>
+</fieldset>
+<div id="dialog-form" title="@ViewRes.Attribute.Titulo" style="display: none;">
+    <p class="validateTips">
+        <strong>@ViewRes.Attribute.Titulo:</strong> @ViewRes.Attribute.AddAttrDesc</p>
+    <form id="form-id">
+    <input type="hidden" id="PointId" name="PointId" value="@Model.Point.Id" />
+    <fieldset style="padding: 0; border: 0;">
+        <label for="attrkey" style="display: block;">
+            @ViewRes.Attribute.AddAttrKey
+        </label>
+        <input type="text" name="attrkey" id="attrkey" value="" style="display: block; width: 95%;"
+            class="text ui-widget-content ui-corner-all" />
+        <label for="attrvalue" style="display: block;">
+            @ViewRes.Attribute.AddAttrValue
+        </label>
+        <input type="text" name="attrvalue" id="attrvalue" value="" style="display: block;
+            width: 95%;" class="text ui-widget-content ui-corner-all" />
+        <label for="attrtype" style="display: block;">
+            @ViewRes.Attribute.AddAttrType</label>
+        <select name="attrtype" id="attrtype" style="display: block; width: 95%;" class="text ui-widget-content ui-corner-all">
+            <option value="System.Boolean">@ViewRes.SharedStrings.Bool</option>
+            <option value="System.String">@ViewRes.SharedStrings.String</option>
+            <option value="System.DateTime">@ViewRes.SharedStrings.Date</option>
+            <option value="System.Decimal">@ViewRes.SharedStrings.Double</option>
+        </select>
+        <input type="checkbox" name="active" id="active" checked="checked" /><label for="active"
+            style="margin-top: 8px;">@ViewRes.Attribute.Active</label>
+    </fieldset>
+    </form>
+</div>
+<div id="dialog-confirm" title="@ViewRes.Attribute.Delete" style="display: none;">
+    <p>
+        <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
+        @ViewRes.Attribute.DeleteMessage
+    </p>
+    <p style="text-align: right; font-weight: bold;">
+        @ViewRes.Attribute.ConfirmDelete</p>
+</div>

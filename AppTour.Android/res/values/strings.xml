@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, AppTourActivity!</string>
+    <string name="app_name">AppTour</string>
+
+    <string name="session_missing">Session Missing</string>
+    <string name="session_required">A valid Session is required to continue</string>
+    <string name="button_login">Login</string>
+    <string name="button_register">Register</string>
+    <string name="button_ok">OK</string>
+    <string name="button_no">No</string>
+    <string name="button_back">Back</string>
+    <string name="button_cancel">Cancel</string>
+    <string name="button_confirm">Confirm</string>
+    <string name="button_map">See Map</string>
+    <string name="button_location">Set Location</string>
+    <string name="button_filters">Set Filters</string>
+    <string name="button_search">Do Search</string>
+    <string name="button_save">Save</string>
+    <string name="button_save_as">Save As</string>
+    <string name="button_delete">Delete</string>
+    <string name="button_themes">Set Themes / Topics</string>
+    
+    <string name="menu_about">About AppTour</string>
+    
+    <string name="about_apptour">AppTour is a ISEP/PESTI project\nVisit us at our WebSite for more info</string>
+    <string name="tap_2_continue">Tap the image to continue</string>
+    <string name="register">Register a New User</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="real_name">Real Name</string>
+    <string name="hint_username">Select a Username</string>
+    <string name="hint_password">Select a Password</string>
+    <string name="hint_rep_pass">Repeat your Password</string>
+    <string name="hint_real_name">Enter your Real Name</string>
+    <string name="rep_pass">Repeat your Password</string>
+    <string name="hint_email">Enter a valid Email</string>
+    <string name="login">Please Login</string>
+    <string name="loading">Loading. Please wait</string>
+    <string name="initializing">Initializing. Please wait</string>
+	<string name="no_internet_connection">No internet connection was found.</string>    
+    <string name="login_failed">Login failed</string>
+    <string name="register_failed">Register new User failed</string>
+    <string name="username_mandatory">Username can not be blank</string>
+    <string name="username_already_exists">Username already exists</string>
+    <string name="email_mandatory">Email can not be blank</string>
+    <string name="email_already_exists">Email already exists</string>
+    <string name="password_mandatory">Password can not be blank</string>
+    <string name="rep_password_mandatory">Please repeat Password</string>
+    <string name="password_6_chars">Passwords must be at least six chars long</string>
+    <string name="passwords_dont_match">Passwords do not match</string>
+    <string name="real_name_mandatory">Real Name can not be blank</string>
+    <string name="unable_get_location">Unable to get Location</string>
+    <string name="location_provider_non_existent">There is no provider to get location</string>
+    <string name="point_title">Point Location</string>
+    <string name="point_visit">Visit this point detail page for more information?</string>
+    <string name="set_search_profile">Select Search Profile</string>
+    <string name="set_search_criteria">Enter a Search Criteria</string>
+    <string name="set_search_distance">Set your Search Distance</string>
+    <string name="set_search_timespan">Set your event TimeSpan</string>
+    <string name="hint_search_criteria">Spa, francesinha..</string>
+    <string name="days">days</string>
+    
+</resources>

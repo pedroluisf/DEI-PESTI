@@ -1,0 +1,80 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = @ViewRes.Country.Titulo;
+}
+<p>
+    @Html.ActionLink(@ViewRes.Country.Novo, "Create", new { controller = "Country" }, new { @class = "jbutton" })
+</p>
+
+@using PagedList.Mvc; 
+@using PagedList; 
+
+
+<link href="@Url.Content("~/Content/PagedList.css")" rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+    $(function () {
+        $(".jbutton").button();
+        $(".edit").button({
+            icons: {
+                primary: "ui-icon-pencil"
+            }
+            , text: false
+        });
+        $(".trash").button({
+            icons: {
+                primary: "ui-icon-trash"
+            }, text: false
+        });
+    });
+</script>
+<div class="ui-widget">
+    <table class="ui-widget ui-widget-content">
+        <thead>
+            <tr>
+                <td class="ui-widget-header" style="text-align: center;">
+                    @ViewRes.Country.ISO
+                </td>
+                <td class="ui-widget-header" style="text-align: center;">
+                    @ViewRes.Country.ISO3
+                </td>
+                <td class="ui-widget-header" style="text-align: center;">
+                    @ViewRes.Country.Nome
+                </td>
+                <td class="ui-widget-header" style="text-align: center;">
+                    @ViewRes.Country.CountryName
+                </td>
+                <td class="ui-widget-header" style="text-align: center;">
+                    @ViewRes.Country.CountryCode
+                </td>
+                <td class="ui-widget-header">
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(AppTour.Model.Models.Country.CountryModel product in ViewBag.OnePage)
+            {
+                <tr>
+                    <td style="text-align: center;">
+                        @product.ISO
+                    </td>
+                    <td style="text-align: center;">
+                        @product.ISO3
+                    </td>
+                    <td style="text-align: center;">
+                        @product.Name
+                    </td>
+                    <td style="text-align: center;">
+                        @product.CountryName
+                    </td>
+                    <td style="text-align: center;">
+                        @product.CountryCode
+                    </td>
+                    <td style="text-align: center; width: 100px;">
+                        <a href="@Url.Action("Edit", new { id = product.Id })" class="edit" >@ViewRes.Country.Edit</a> <a href="@Url.Action("Delete", new { id = product.Id })" class="trash">@ViewRes.Country.Apagar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @Html.PagedListPager((IPagedList)ViewBag.OnePage, page => Url.Action("Index", new { page = page }), new PagedListRenderOptions { LinkToFirstPageFormat = @ViewRes.SharedStrings.Primeira, LinkToPreviousPageFormat = @ViewRes.SharedStrings.Anterior, LinkToNextPageFormat = @ViewRes.SharedStrings.Seguinte, LinkToLastPageFormat = @ViewRes.SharedStrings.Ultima })
+</div>

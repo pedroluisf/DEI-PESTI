@@ -1,0 +1,95 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model IEnumerable<AppTour.Model.Models.Point.PointModel>
+@{
+    ViewBag.Title = ((AppTour.Model.Models.Topic.TopicModel)ViewBag.Topic).Name;
+    string topicValue = Html.Encode(((AppTour.Model.Models.Topic.TopicModel)ViewBag.Topic).Name);
+}
+<link href="@Url.Content("~/Content/PagedList.css")" rel="stylesheet" type="text/css" />
+<h2>@ViewBag.Title</h2>
+<style type="text/css">
+    .point
+    {
+        padding: 5px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    .point:hover
+    {
+        background-color: #eee;
+    }
+    .imagemClick
+    {
+        cursor: hand;
+        cursor: pointer;
+    }
+    .bottom
+    {
+        top: 50px;
+        position: relative;
+    }
+</style>
+<script type="text/javascript">
+    $(function () {
+        $('.imagemClick').click(function () {
+            var coord = $(this).attr("title");
+
+            var title = $(this).find("img").attr('title');
+
+            var url = null;
+            if (title == "streetview") {
+                // Show Maps
+                url = "http://maps.googleapis.com/maps/api/staticmap?center=" + coord + "&zoom=11&size=200x150&sensor=false";
+                title = "maps";
+            } else {
+                // Show Street View
+                url = "http://maps.googleapis.com/maps/api/streetview?size=200x150&location=" + coord + "&heading=235&sensor=false"
+                title = "streetview";
+            }
+
+            $(this).find("img").attr("src", url);
+            $(this).find("img").attr("title", title);
+            return false;
+        });
+    });
+</script>
+<div id="mainContainer">
+    @foreach (var item in Model)
+    {
+        string RealCoordenada = string.Empty;
+        string[] ArrayCoordenada = item.Coordenate.Split(',');
+        if (ArrayCoordenada.Length == 4)
+        {
+            RealCoordenada = ArrayCoordenada[0] + '.' + ArrayCoordenada[1] + "," + ArrayCoordenada[2] + '.' + ArrayCoordenada[3];
+        }
+
+        if (RealCoordenada == string.Empty)
+        {
+            RealCoordenada = item.Coordenate;
+        }
+        
+        <div id="@item.Id" class="point">
+            <div class="left">
+                <h1>
+                    <a href="@Url.Action("Detail", new { id = item.Id.ToString() })">@item.Name</a></h1>
+                <p>@item.Address<br />@item.PostalCode - @item.City.Name, @item.City.Country.CountryName</p>
+                <div class="bottom">
+                    <img src="@Url.Content("~/Content/images/url.png")" alt="URL" style="vertical-align: middle;"/>
+                    <a href="@item.URL" target="_blank">@item.Name</a> |
+                    <img src="@Url.Content("~/Content/images/phone.png")" alt="Phone" style="vertical-align: middle;" />
+                    @item.PhoneNumber
+                </div>
+            </div>
+            <div class="right">
+                <div id="image-@item.Id" title="@RealCoordenada" class="imagemClick">
+                    <img src="http://maps.googleapis.com/maps/api/staticmap?center=@RealCoordenada&zoom=11&size=200x150&sensor=false" title="maps">
+                </div>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+    }
+</div>
+<div style="margin-top: 25px">
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Show", new { id = Html.Encode(topicValue), page = page }), new PagedListRenderOptions { LinkToFirstPageFormat = @ViewRes.SharedStrings.Primeira, LinkToPreviousPageFormat = @ViewRes.SharedStrings.Anterior, LinkToNextPageFormat = @ViewRes.SharedStrings.Seguinte, LinkToLastPageFormat = @ViewRes.SharedStrings.Ultima })
+</div>

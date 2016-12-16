@@ -1,0 +1,59 @@
+﻿@model AppTour.Model.Models.Theme.ThemeModel
+@{
+    ViewBag.Title = @ViewRes.Theme.Editar;
+}
+<script type="text/javascript">
+    $(function () {
+        $("input:submit, button, #button").button();
+        $("#Name").addClass("text ui-widget-content ui-corner-all");
+        $("#Description").addClass("text ui-widget-content ui-corner-all");
+        $("#Image").addClass("text ui-widget-content ui-corner-all");
+        $("#Activo").addClass("text ui-widget-content ui-corner-all");
+    });
+</script>
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>@ViewRes.Theme.ThemeHeader</legend>
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.CreationDate)
+        @Html.HiddenFor(model => model.UpdateDate)
+        <div class="editor-label">
+            @Html.Label(@ViewRes.Theme.Nome)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+        <div class="editor-label">
+            @Html.Label(@ViewRes.Theme.Descricao)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+        <div class="editor-label">
+            @Html.Label(@ViewRes.Theme.Imagem)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Image)
+            @Html.ValidationMessageFor(model => model.Image)
+        </div>
+        <div class="editor-label">
+            @Html.Label(@ViewRes.Theme.Activo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.IsActive)
+            @Html.ValidationMessageFor(model => model.IsActive)
+        </div>
+        <p>
+            <input type="submit" value="@ViewRes.Theme.Editar" />
+        </p>
+    </fieldset>
+}
+<div>
+    @Html.ActionLink(@ViewRes.Language.Lista, "Index", new { controller = "Theme" }, new { id = "button" })
+</div>

@@ -1,0 +1,93 @@
+﻿@model AppTour.Model.Models.Language.LanguageModel
+@{
+	ViewBag.Title = @ViewRes.Language.Apagar;
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+	$(function () {
+		$("input:submit, button, #button").button();
+		$("#dialog:ui-dialog").dialog("destroy");
+		$("#delete")
+			.button()
+			.click(function () {
+				$("#delete-dialog").dialog("open");
+			});
+		$("#delete-dialog").dialog({
+			resizable: false,
+			autoOpen: false,
+			height: 200,
+			show: { effect: 'drop', direction: "up" },
+			hide: { effect: 'drop', direction: "down" },
+			modal: true,
+			buttons: {
+				"@ViewRes.SharedStrings.Apagar": function () {
+					$(this).dialog("close");
+					$("Form").submit();
+
+				},
+				Cancel: function () {
+					$(this).dialog("close");
+				}
+			}
+		});
+	});
+</script>
+<div id="delete-dialog" title="@ViewRes.Language.Apagar" style="display: none;">
+	<p>
+		<span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
+		@ViewRes.Language.DeleteMessage</p>
+	<p style="text-align: right; font-weight: bold;">
+		@ViewRes.Language.AreYouSure</p>
+</div>
+@if (ViewData.Count > 1)
+{ 
+	<div class="ui-widget">
+		<div class="ui-state-error ui-corner-all" style="margin-top: 2px; margin-bottom: 10px;
+			padding: 0 .7em;">
+			<p>
+				<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>
+				@foreach (var error in ViewData)
+				{ 
+					<strong>@error.Key</strong> @error.Value
+				}
+			</p>
+		</div>
+	</div>
+}
+else
+{ 
+	<div class="ui-widget">
+		<div class="ui-state-highlight ui-corner-all" style="margin-top: 2px; margin-bottom: 10px;
+			padding: 0 .7em;">
+			<p>
+				<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>
+				<strong>@ViewRes.SharedStrings.Atencao</strong> @ViewRes.Language.ConfirmDelete
+				<strong>@Model.Name</strong>?</p>
+		</div>
+	</div>
+}
+<fieldset>
+	<legend>@ViewRes.Language.LinguaHeader</legend>
+	<div class="display-label">
+		@ViewRes.Language.Nome</div>
+	<div class="display-field">
+		@Html.DisplayFor(model => model.Name)
+	</div>
+	<div class="display-label">
+		@ViewRes.Language.ISO</div>
+	<div class="display-field">
+		@Html.DisplayFor(model => model.ISO2)
+	</div>
+	<div class="display-label">
+		@ViewRes.Language.Activo</div>
+	<div class="display-field">
+		@Html.DisplayFor(model => model.IsActive)
+	</div>
+</fieldset>
+@using (Html.BeginForm("Delete/" + Model.Id, "Language", FormMethod.Post, new { id = "Form" }))
+{
+	<p>
+		<a href="javascript:void(0);" id="delete">@ViewRes.Language.Apagar</a>
+		@Html.ActionLink(@ViewRes.Language.Lista, "Index", new { controller = "Language" }, new { id = "button" })
+	</p>
+}

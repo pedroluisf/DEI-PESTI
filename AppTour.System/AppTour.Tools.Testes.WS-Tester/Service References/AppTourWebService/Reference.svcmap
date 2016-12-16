@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9252c37b-f3ac-4cdc-8b19-1021b1986487" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:56421/AppTourWS.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="AppTourWS.wsdl" MetadataType="Wsdl" ID="54d9cfde-5376-4c86-879d-bfedf95e9bea" SourceId="1" SourceUrl="http://localhost:56421/AppTourWS.svc?wsdl" />
+    <MetadataFile FileName="AppTourWS.disco" MetadataType="Disco" ID="4e0e5c0a-c5ce-49a2-8c35-e64c39fe0aba" SourceId="1" SourceUrl="http://localhost:56421/AppTourWS.svc?disco" />
+    <MetadataFile FileName="AppTourWS.xsd" MetadataType="Schema" ID="33dc0256-e3a8-4f26-b158-36a36d730b7a" SourceId="1" SourceUrl="http://localhost:56421/AppTourWS.svc?xsd=xsd3" />
+    <MetadataFile FileName="AppTourWS1.xsd" MetadataType="Schema" ID="16eb0543-7d80-4e63-b7a9-3c5b9c8f6f8f" SourceId="1" SourceUrl="http://localhost:56421/AppTourWS.svc?xsd=xsd2" />
+    <MetadataFile FileName="AppTourWS2.xsd" MetadataType="Schema" ID="070195dd-d008-4058-a91a-62a033a2d2cc" SourceId="1" SourceUrl="http://localhost:56421/AppTourWS.svc?xsd=xsd1" />
+    <MetadataFile FileName="AppTourWS3.xsd" MetadataType="Schema" ID="bba8f802-53fd-4ed0-8cd7-25491e49e0ad" SourceId="1" SourceUrl="http://localhost:56421/AppTourWS.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

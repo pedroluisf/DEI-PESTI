@@ -1,0 +1,281 @@
+﻿@model AppTour.Model.Models.User.UserModel
+@{
+    ViewBag.Title = String.Format(@ViewRes.Profile.Titulo, Model.RealName);
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    label, input
+    {
+        display: block;
+    }
+    input.text
+    {
+        margin-bottom: 12px;
+        width: 95%;
+        padding: .4em;
+    }
+    fieldset
+    {
+        padding: 0;
+        border: 0;
+        margin-top: 25px;
+    }
+    h1
+    {
+        font-size: 1.2em;
+        margin: .6em 0;
+    }
+    
+    .ui-dialog .ui-state-error
+    {
+        padding: .3em;
+    }
+    .validateTips
+    {
+        border: 1px solid transparent;
+        padding: 0.3em;
+    }
+</style>
+<script type="text/javascript">
+	$(function () {
+		$("#tabs").tabs();
+		$("#tabs").tabs({ fx: { opacity: 'toggle'} });
+
+		$("a", "#profile").button();
+		
+		$("a", "#profile").click(function () {
+			if (this.id == "editProfile") {
+				$("#dialog:ui-dialog").dialog("destroy");
+				$("#dialog-form").dialog("open");
+			}
+			if (this.id == "deleteAccount")
+			{
+				$( "#dialog-confirm" ).dialog({
+					resizable: false,
+					
+					height:215,
+					modal: true,
+					show: { effect: 'drop', direction: "up" },
+					hide: { effect: 'drop', direction: "down" },
+					buttons: {
+						"@ViewRes.Profile.ApagarConta": function() {
+						$.ajax(
+						{
+							url: "@Url.Content("~/Account/DeleteAccount")",
+							secureuri: false,
+							data: '@Model.UserName',
+							dataType: 'text',
+							success: function (data, status) {
+								if (status == 'success') {
+									if (data == 'Sucesso') {
+									   $("#dialog-form").dialog("close");
+										setTimeout(function() { window.location = "@Request.Url.Scheme://@Request.Url.Authority"; }, 500);
+									}
+								}
+							},
+							error: function (data, status, e) {
+								alert(e);
+							}
+			
+					  });
+					  },
+						Cancel: function() {
+							$( this ).dialog( "close" );
+						}
+					}
+				});
+			}
+		});
+		var name = $("#name"),
+			email = $("#email"),
+			password = $("#oldpassword"),
+			newpass = $("#password"),
+			newpass1 = $("#repeatpassword"),
+			allFields = $([]).add(name).add(email).add(password).add(newpass).add(newpass1),
+			tips = $(".validateTips");
+
+
+		function updateTips(t) {
+			tips.text(t).addClass("ui-state-highlight");
+			setTimeout(function () {tips.removeClass("ui-state-highlight", 1500);}, 500);
+		}
+
+
+		
+		function checkLength(o, n, min, max) {
+			if (o.val().length > max || o.val().length < min) {
+				o.addClass("ui-state-error");
+				var str = '@ViewRes.Profile.ErrorLength';
+				updateTips(str.format(n,min,max));
+				return false;
+			} else {
+				return true;
+			}
+		}
+
+		function checkRegexp(o, regexp, n) {
+			if (!(regexp.test(o.val()))) {
+				o.addClass("ui-state-error");
+				updateTips(n);
+				return false;
+			} else {
+				return true;
+			}
+		}
+		$("#dialog:ui-dialog").dialog("destroy");
+		$("#dialog-form").dialog({
+			autoOpen: false,
+			height: 535,
+			width: 350,
+			show: { effect: 'drop', direction: "up" },
+			hide: { effect: 'drop', direction: "down" },
+			modal: true,
+			open: function() { $("#name").val('@Model.RealName'); $("#email").val(""); $("#password").val(""); $("#oldpassword").val(""); $("#repeatpassword").val(""); $("#email").val('@Model.Email');  },
+			buttons: {
+				"@ViewRes.Profile.EditarPerfil": function () {
+					var bValid = true;
+					allFields.removeClass("ui-state-error");
+					
+					var re = /^(([^<>()[\]\\.,;:\s@@\"]+(\.[^<>()[\]\\.,;:\s@@\"]+)*)|(\".+\"))@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+					bValid = bValid && checkLength(name, "name", 3, 80);
+					bValid = bValid && checkRegexp(email, re, "@ViewRes.Profile.EmailInvalido");
+					bValid = bValid && checkLength(password, "oldpassword", 6, 15);
+
+					if (newpass.val().length > 0)
+					{
+					
+						bValid = bValid && checkLength(newpass, "password", 6, 15);
+						bValid = bValid && checkLength(newpass1, "repeatpassword", 6, 15);
+						if (newpass.val() != newpass1.val())
+						{
+							newpass.addClass("ui-state-error");
+							newpass1.addClass("ui-state-error");
+							updateTips("@ViewRes.Profile.PasswordDontMatch");
+							bValid = false;
+						}
+					}
+
+					if (bValid) {
+						var data = jQuery('#form-id').serialize();
+						$.ajax(
+						{
+							url: "@Url.Content("~/Account/UpdateProfile")",
+							secureuri: false,
+							data: data,
+							dataType: 'text',
+							success: function (data, status) {
+								if (status == 'success') {
+									updateTips(data);
+									if (data == 'Sucesso') {
+									   $("#dialog-form").dialog("close");
+										setTimeout(function() { location.reload(); }, 500);
+									}
+								}
+							},
+							error: function (data, status, e) {
+								alert(e);
+							}
+			
+					  });
+
+					}
+				},
+				Cancel: function () {
+					$(this).dialog("close");
+				}
+			},
+			close: function () {
+				allFields.removeClass("ui-state-error");
+			}
+		});
+
+	});
+</script>
+<div id="dialog-confirm" title="@ViewRes.Profile.ApagarConta" style="display: none;">
+    <p>
+        <span class="ui-icon ui-icon-alert" style="float: left; margin: 0 7px 20px 0;"></span>
+        @ViewRes.Profile.DeleteAccountMsg
+    </p>
+    <p style="text-align: right; font-weight: bold;">
+        @ViewRes.Profile.DeleteAccountMsg1</p>
+</div>
+<div id="dialog-form" title="Editar Utilizador">
+    <p class="validateTips">
+        @ViewRes.Profile.EditUserHeader <strong>@Model.RealName</strong></p>
+    <form id="form-id">
+    <fieldset>
+        <label for="username">
+            @ViewRes.Profile.Username
+        </label>
+        <input type="text" name="username" id="username" value="@Model.UserName" readonly class="text ui-widget-content ui-corner-all" />
+        <label for="name">
+            @ViewRes.Profile.Nome</label>
+        <input type="text" name="name" id="name" value="@Model.RealName" class="text ui-widget-content ui-corner-all" />
+        <label for="email">
+            @ViewRes.Profile.Email</label>
+        <input type="text" name="email" id="email" value="@Model.Email" class="text ui-widget-content ui-corner-all" />
+        <label for="password">
+            @ViewRes.Profile.NewPassword</label>
+        <input type="password" name="password" id="password" value="" class="text ui-widget-content ui-corner-all" />
+        <label for="repeatpassword">
+            @ViewRes.Profile.NewPassword1</label>
+        <input type="password" name="repeatpassword" id="repeatpassword" value="" class="text ui-widget-content ui-corner-all" />
+        <label for="oldpassword">
+            @ViewRes.Profile.OldPassword</label>
+        <input type="password" name="oldpassword" id="oldpassword" value="" class="text ui-widget-content ui-corner-all" />
+    </fieldset>
+    </form>
+</div>
+<div id="tabs">
+    <ul>
+        <li><a href="#profile">Perfil</a></li>
+        @if (!Model.Role.Equals("Utilizador"))
+        { 
+            <li><a href="#myPoints">@ViewRes.Profile.MyPoints</a></li>
+        }
+        <li><a href="#mySearchProfile">@ViewRes.Profile.Search</a></li>
+    </ul>
+    <div id="profile">
+        <div class="display-label">
+            @ViewRes.Profile.Nome</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.RealName)
+        </div>
+        <div class="display-label">
+            @ViewRes.Profile.Email</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Email)
+        </div>
+        <div class="display-label">
+            @ViewRes.Profile.Username</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.UserName)
+        </div>
+        <div class="display-label">
+            @ViewRes.Profile.Role</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Role)
+        </div>
+        <div class="display-label">
+            @ViewRes.SharedStrings.CreationDate</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.CreationDate)
+        </div>
+        <div class="buttons">
+            <a href="#" id="editProfile">@ViewRes.Profile.EditarPerfil</a>&nbsp; <a href="#"
+                id="deleteAccount">@ViewRes.Profile.ApagarConta</a>
+        </div>
+    </div>
+    @if (!Model.Role.Equals("Utilizador"))
+    { 
+        <div id="myPoints">
+            Nothing yet
+        </div>
+    }
+    <div id="mySearchProfile">
+        @{ 
+            Html.RenderAction("MyProfiles", "SearchProfile");
+        }
+    </div>
+</div>

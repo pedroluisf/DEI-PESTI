@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="AppTour.WebServices.WS.AppTourWS" CodeBehind="AppTourWS.svc.cs" %>

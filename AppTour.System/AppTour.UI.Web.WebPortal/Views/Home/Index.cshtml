@@ -1,0 +1,93 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+<div id="map_canvas" style="width: 95%; height: 420px; margin: 0 auto; background-color: #eee;">
+    <div class="circle">
+    </div>
+    <div class="circle1">
+    </div>
+    <p style="text-align: center; font-size: large; font-weight: bold;">
+        Loading</p>
+</div>
+<script type="text/javascript">
+    function initialize(lat, log) {
+        if (lat == null) {
+            lat = 0.0;
+        }
+        if (log == null) {
+            log = 0.0;
+        }
+        var myOptions = {
+            zoom: 13,
+            center: new google.maps.LatLng(lat, log),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById('map_canvas'),
+      myOptions);
+
+        var marker = new google.maps.Marker({
+            position: map.getCenter(),
+            map: map,
+            title: 'You are here!'
+        });
+
+        google.maps.event.addListener(map, 'center_changed', function () {
+            // 3 seconds after the center of the map has changed, pan back to the
+            // marker.
+            window.setTimeout(function () {
+                map.panTo(marker.getPosition());
+            }, 3000);
+        });
+
+        google.maps.event.addListener(marker, 'click', function () {
+            map.setZoom(16);
+            map.setCenter(marker.getPosition());
+        });
+        var data = lat + ',' + log;
+
+        $.ajax({
+				url: "@Url.Content("~/Home/SaveMyPosition/")" + data,
+				secureuri: false,
+				data: data,
+				dataType: 'text',
+				success: function (data, status) {
+				},
+				error: function (data, status, e) {
+					alert(e);
+				}
+			
+			});
+
+
+    }
+    $(function () {
+        $(document).ready(function () {
+
+
+        });
+        var gl;
+
+        function displayPosition(position) {
+            initialize(position.coords.latitude, position.coords.longitude);
+            $('.circle, .circle1').toggleClass('stop');
+        }
+
+        function displayError(positionError) {
+            alert("error");
+        }
+
+        try {
+            if (typeof navigator.geolocation === 'undefined') {
+                gl = google.gears.factory.create('beta.geolocation');
+            } else {
+                gl = navigator.geolocation;
+            }
+        } catch (e) { }
+        if (gl) {
+            gl.getCurrentPosition(displayPosition, displayError);
+        } else {
+            alert("Geolocation services are not supported by your web browser.");
+        }
+    });
+    
+</script>

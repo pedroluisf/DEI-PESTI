@@ -1,0 +1,92 @@
+﻿@model IEnumerable<AppTour.Model.Models.App.AppModel>
+<p>
+    @Html.ActionLink(@ViewRes.App.Nova, "Create", new { controller = "App" }, new { @class = "jbutton" })
+</p>
+@{ 
+    ViewBag.Title = @ViewRes.App.Titulo;   
+}
+<script type="text/javascript">
+    $(function () {
+        $(".jbutton").button();
+        $(".edit").button({
+            icons: {
+                primary: "ui-icon-pencil"
+            }
+            , text: false
+        });
+        $(".url").button({
+            icons: {
+                primary: "ui-icon-signal-diag"
+            }
+            , text: false
+        });
+        $(".trash").button({
+            icons: {
+                primary: "ui-icon-trash"
+            }, text: false
+        });
+    });
+</script>
+<div class="ui-widget">
+    <table class="ui-widget ui-widget-content">
+        <thead>
+            <th class="ui-widget-header">
+                @ViewRes.App.Empresa
+            </th>
+            <th class="ui-widget-header">
+                @ViewRes.App.Nome
+            </th>
+            <th class="ui-widget-header">
+                @ViewRes.App.Descricao
+            </th>
+            <th class="ui-widget-header">
+                @ViewRes.App.Version
+            </th>
+            <th class="ui-widget-header" style="text-align: center;">
+                @ViewRes.App.URL
+            </th>
+            <th class="ui-widget-header" style="text-align: center;">
+                @ViewRes.SharedStrings.CreationDate
+            </th>
+            <th class="ui-widget-header" style="text-align: center;">
+                @ViewRes.SharedStrings.UpdateDate
+            </th>
+            <th class="ui-widget-header" style="width: 100px;">
+            </th>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Enterprise.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Version)
+                    </td>
+                    <td style="text-align: center;">
+                        <a href="@item.URL" class="url" target="_blank">@Html.DisplayFor(modelItem => item.Name)
+                            @ViewRes.App.URL (@item.URL)</a>
+                    </td>
+                    <td style="text-align: center;">
+                        @Html.DisplayFor(modelItem => item.CreationDate)
+                    </td>
+                    <td style="text-align: center;">
+                        @Html.DisplayFor(modelItem => item.UpdateDate)
+                    </td>
+                    <td style="text-align: center;">
+                        <a href="@Url.Action("Edit", new { id = item.Id })" class="edit">@ViewRes.SharedStrings.Editar</a>
+                        <a href="@Url.Action("Delete", new { id = item.Id })"
+                            class="trash">@ViewRes.SharedStrings.Apagar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
